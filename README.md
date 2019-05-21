@@ -49,3 +49,16 @@ fig 3. scatterplot met bijen verlies tegenover honingproductie in de VS
 
 
 knop [RESET]: zet fig 1 en 2 naar actuele jaar (met volledige VS data voor fig 3)
+
+
+Optional features:
+4e figuur met scatter bijen verlies tegen (door bijen bestuifde)krop productie
+
+4e/5e figuur met taartdiagram (piechart) oorzaak van verlies
+- interacties:
+  fig 2, klik op staat ==> selecteert verlies causatie in taartdiagram
+  muis over taartpunt: d3-tip met aanvullende/preciezere data
+
+
+
+# 
