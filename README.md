@@ -52,13 +52,37 @@ meer zal worden gedaan om dit probleem te verhelpen.
 
 
 ##Optional features:
+
 ###4e figuur met taartdiagram (piechart) oorzaak van verlies
 - interacties:
+  fig 1, klik op jaarpunt ==> selecteert jaar voor taartdiagram
   fig 2, klik op staat ==> selecteert verlies causatie in taartdiagram
   muis over taartpunt: d3-tip met aanvullende/preciezere data
 
 ###4e/5e figuur met scatter bijen verlies tegen (door bijen bestuifde)krop productie
 
 
+# Data sources
+https://data.world/finley/bee-colony-statistical-data-from-1987-2017
+Bee Colony Loss.xlsx, transformatie: relevante data naar json
 
-#
+https://usda.library.cornell.edu/concern/publications/rn301137d
+alle jaren, transformatie: relevante data naar json (zit veel losse tekst in)
+
+https://usda.library.cornell.edu/concern/publications/hd76s004z?locale=en&page=2
+alle jaren, transformatie: relevante data naar json (zit veel losse tekst in)
+
+
+# External components
+- d3-tip
+- Datamaps
+
+
+# Similar visualisations
+geen hadden (gelinkte) interactie, nog geen taartdiagram van causatie gevonden.
+wel al bijen afname per staat, in een map, met kleuren als indicatie voor afname, wat ik ook kan doen.
+
+# Moeilijkste gedeelte
+datamaps werkend krijgen, met ook nog linked view. Al aan datamaps zitten met data-processing om werking onder de knie te krijgen.
+
+taartdiagram met linked view.
