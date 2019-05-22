@@ -21,7 +21,7 @@ meer zal worden gedaan om dit probleem te verhelpen.
 
 # Main features
 
-![Sketch](doc/sketch.png?raw=true "Sketch")
+![Sketch](doc/sketch4.png?raw=true "Sketch")
 
 
 
