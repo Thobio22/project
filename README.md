@@ -83,6 +83,6 @@ geen hadden (gelinkte) interactie, nog geen taartdiagram van causatie gevonden.
 wel al bijen afname per staat, in een map, met kleuren als indicatie voor afname, wat ik ook kan doen.
 
 # Moeilijkste gedeelte
-datamaps werkend krijgen, met ook nog linked view. Al aan datamaps zitten met data-processing om werking onder de knie te krijgen.
+Datamaps werkend krijgen (met d3 v5 en v3), met ook nog linked view. Om dit te verhelpen kan ik al aan datamaps zitten met data-processing om de werking onder de knie te krijgen.
 
 taartdiagram met linked view.
