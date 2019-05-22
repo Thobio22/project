@@ -20,6 +20,11 @@ meer zal worden gedaan om dit probleem te verhelpen.
 
 
 # Main features
+
+![Alt text](doc/sketch.png)
+
+
+
 ## minimum viable product:
 
 #### fig 1. lijn grafiek met jaarlijks verlies aan bijen in de VS
@@ -85,4 +90,4 @@ wel al bijen afname per staat, in een map, met kleuren als indicatie voor afname
 # Moeilijkste gedeelte
 Datamaps werkend krijgen (met d3 v5 en v3), met ook nog linked view. Om dit te verhelpen kan ik al aan datamaps zitten met data-processing om de werking onder de knie te krijgen.
 
-taartdiagram met linked view.
+Taartdiagram met linked view.
