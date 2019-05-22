@@ -21,7 +21,7 @@ meer zal worden gedaan om dit probleem te verhelpen.
 
 # Main features
 
-![Alt text](doc/sketch.png)
+![Alt text](/doc/sketch.png)
 
 
 
