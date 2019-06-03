@@ -21,50 +21,51 @@ meer zal worden gedaan om dit probleem te verhelpen.
 
 # Main features
 
-![Sketch](doc/sketch4.png?raw=true "Sketch")
-
-
-
 ## minimum viable product:
+![Sketch](doc/paint_sketch_MVP_small.png?raw=true "Sketch")
 
-#### fig 1. lijn grafiek met jaarlijks verlies aan bijen in de VS
-- interacties:
-  muis over punt in lijn: d3-tip met aanvullende/preciezere data,
-                          highlight de amerikaanse staat met het meeste
-                          verlies in bijen in fig 2
+#### Fig 1. Datamap van Jaarlijkse Bijen sterfte per staat in de VS.
+De data is selecteerbaar per jaar m.b.v. een dropdown selector (1987 - 2018).
 
-  klik op punt in lijn: zet aangeklikte jaar voor de scatterplot data in fig 3
+De kleur is een indicatie voor de bijensterfte (donkerder = meer sterfte).
 
+On hover: d3-tooltip met staat naam + precieze bijensterfte(%).
 
-#### fig 2. datamap met bijen verlies per staat
-- interacties:
-  data selecteerbaar per jaar door middel van een dropdown
-
-  muis over staat: d3-tip met aanvullende/preciezere data
-
-  klik op staat: zet aangeklikte staat + van te voren gekozen jaartal als benodigdheden
-                 voor de data gevisualiseerd in fig 3
+On click: 2 gelinkte grafieken zullen de dataset gebruiken van die specifieke staat.
 
 
-#### fig 3. scatterplot met bijen verlies tegenover honingproductie in de VS
-- interacties:
-  muis over datapunt: d3-tip met aanvullende/preciezere data
+#### Fig 2. Multiple Line-chart van Totale bijenverlies(%) met het wilde vegetatieverlies(%) per jaar.
+De default data is van de VS in zijn geheel (1987-2018).
 
-  zie interacties bij fig 1+2 voor interacties op fig 3
+De data veranderd naar die van de geselecteerde staat in de Datamap.
+
+Data kan worden gereset naar geheel VS met een RESET knop, jaar is nog bepaald door de dropdown selector.
+
+On hover: d3-tooltip met jaar + staat naam + bijensterfte(%) + vegetatieverlies(%).
 
 
-#### knop [RESET]: zet fig 1 en 2 naar actuele jaar (met volledige VS data voor fig 3)
+#### Fig 3. Pie-chart van Causatie bijenverlies(%) per jaar.
+De default data is van de VS in zijn geheel.
+
+De data veranderd naar die van de geselecteerde staat in de Datamap en het jaar van de dropdown selector (momenteel alleen causatie van 2015-2018 gevonden).
+
+Titel geeft aan welke dataset wordt gebruikt (VS of geklikte staat).
+
+Data kan worden gereset naar geheel VS met een RESET knop, jaar is nog bepaald door de dropdown selector.
+
+On hover: d3-tooltip met Causatie + bijensterfte(%0.)
 
 
-## Optional features:
 
-#### 4e figuur met taartdiagram (piechart) oorzaak van verlies
-- interacties:
-  fig 1, klik op jaarpunt ==> selecteert jaar voor taartdiagram
-  fig 2, klik op staat ==> selecteert verlies causatie in taartdiagram
-  muis over taartpunt: d3-tip met aanvullende/preciezere data
+## Optional features
+#### Fig 4. Scatterplot van bijensterfte(%) tegen honingproductie(L) per jaar.
+De default data is van de VS in zijn geheel
 
-#### 4e/5e figuur met scatter bijen verlies tegen (door bijen bestuifde)krop productie
+De data veranderd naar het geselecteerde jaar in de dropdown selector.
+
+De titel veranderd aan de hand van het geselecteerde jaar in de dropdown selector.
+
+On hover: d3-tooltip staat naam + exacte bijenpercentage(%) en honingproductie(L).
 
 
 # Data sources
@@ -77,6 +78,16 @@ alle jaren, transformatie: relevante data naar json (zit veel losse tekst in)
 https://usda.library.cornell.edu/concern/publications/hd76s004z?locale=en&page=2
 alle jaren, transformatie: relevante data naar json (zit veel losse tekst in)
 
+https://quickstats.nass.usda.gov/#E5B74DFC-0B12-39CB-BE0B-73F735ADE73B
+https://quickstats.nass.usda.gov/results/BA791169-025D-3218-9BAE-A9939FCC31FD
+selecteerbare datasets aan de hand van een stapsgewijs selectieproces.
+* Select Commodity => SURVEY => ANIMALS & PRODUCTS => SPECIALTY => HONEY => selecteer je gewilde data
+* Select Location => STATE => selecteer alle staten met shift + arrowdown
+* Select Time => alle mogelijke jaren => gelieve jaarlijks, maar maandelijks kan ook =>
+* klik op [Get Data]
+* spreadsheet (rechts bovenin)
+
+
 
 # External components
 - d3-tip
@@ -88,6 +99,4 @@ geen hadden (gelinkte) interactie, nog geen taartdiagram van causatie gevonden.
 wel al bijen afname per staat, in een map, met kleuren als indicatie voor afname, wat ik ook kan doen.
 
 # Moeilijkste gedeelte
-Datamaps werkend krijgen (met d3 v5 en v3), met ook nog linked view. Om dit te verhelpen kan ik al aan datamaps zitten met data-processing om de werking onder de knie te krijgen.
-
-Taartdiagram met linked view.
+Datamaps werkend krijgen (met d3 v5 en v3), met ook nog linked view, dit is in de vorige opdracht nog niet goed gelukt. Om dit te verhelpen kan ik de map als eerste implementeren, zodat eventuele problemen vroeg in het project kunnen worden verholpen.
