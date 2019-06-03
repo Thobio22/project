@@ -58,6 +58,8 @@ On hover: d3-tooltip met Causatie + bijensterfte(%0.)
 
 
 ## Optional features
+![Sketch2](doc/paint_sketch_OPTIONAL_small.png?raw=true "Sketch2")
+
 #### Fig 4. Scatterplot van bijensterfte(%) tegen honingproductie(L) per jaar.
 De default data is van de VS in zijn geheel
 
