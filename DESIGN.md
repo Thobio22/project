@@ -1,18 +1,3 @@
-
-For this deadline, you must prove that you have access to the data in a usable format!
-
-Some parts that you should describe here:
-
-    a list of data sources if you will get data from an external source, including information on how your are going to filter and transform the data for your project
-
-    a diagram with an overview of the technical components of your app (visualizations, scraper etc etc)
-
-    as well as descriptions of each of the components and what you need to implement these
-
-    a list of APIs or D3 plugins that you will be using to provide functionality in your app
-
-
-
 # Designer Document
 Project desinger document
 
@@ -49,10 +34,26 @@ H. bijenverlies -dead out per staat (2015-2018)
 https://quickstats.nass.usda.gov/results/BA791169-025D-3218-9BAE-A9939FCC31FD
 Honing productie per staat in $, in lb, en in lb per colony. (1987 - 2018)
 
+https://quickstats.nass.usda.gov/results/80143160-AD04-3382-89A0-DEC7759CB44F
+Appel yield, production(in $ en tonnes), acres bearing (1987 - 2018)
+
+https://quickstats.nass.usda.gov/results/6ACA3AE6-9517-33D4-B04E-83800CE9FB29
+Peer yield(in tons per acre), production in $ (2007 - 2018) (gelimiteerde aantal staten selecteerbaar)
+
+https://quickstats.nass.usda.gov/results/146E5063-20DD-3146-BE36-25B1137A1A8F
+Aarbij yield (cwt per acre), production in $ (1998 - 2018)
+
+https://quickstats.nass.usda.gov/results/CC1126CA-0EC3-3B74-80EC-CFE1BB0FDD5E
+Perzik yield (tons per acre), production in tons (2003 - 2018)
+
+https://quickstats.nass.usda.gov/results/B1A0842B-B922-3892-9AF2-A474499B89FB
+Kersen yield (Tons / acre), production (tons) (1998 - 2018)
+
+https://quickstats.nass.usda.gov/results/A5F239B3-BC84-3F4D-A184-C7F20764A8DA
+Blauwe bessen yield(lb/acre), production (in $, en in lb) (2007 - 2018)
 
 
-
-
+* let op bij de data van de fruit gewassen, de jaartallen komen niet altijd overeen, en niet alle staten produceren genoeg om in een dataset opgeslagen te staan.
 
 
 
@@ -90,10 +91,6 @@ H bijenkolonies die geplaagd zijn door onbekende factoren (2015 - 2018)
 
 
 
-
-
-
-
 ## Technische componenten overzicht
 Hier zullen de componenten van de visualisatie worden uitgelegd, opgesplitst in *minimum viable product* en *optionele componenten*.
 
@@ -121,7 +118,7 @@ Hier zullen de componenten van de visualisatie worden uitgelegd, opgesplitst in 
 #### Fig 2. Multiple Line-chart van Totale bijenverlies(%) met het wilde vegetatieverlies(%) per jaar.
 * In de body van de .html file wordt een div gemaakt onder de datamap div. Hierin zullen figuur 2 en 3 naast elkaar worden gezet.
 
-* De data die deze linechart laat zien is de totale bijensterfte(%) en de productie top 15 door bijen bestoven gewassen in de VS op een 2e y-as aan de rechterkant, met een x-as van jaren 2010 t/m 2017. Dit doet het door middel van meerdere lijnen, waarbij de gewassen selecteerbaar aan/uit zijn d.m.v. een checkbox. De desbetreffende gewassen zijn: appel, peer, watermeloen, alfalfa, tomaat, bramen, komkommer, pompoen, pruim, kers, blauwe bes, aardbij, kiwi, abrikoos. Elke lijn krijgt een andere kleur, met 0 t/m 15 gewassen lijnen zichtbaar (door de checkbox).
+* De data die deze linechart laat zien is de totale bijensterfte(%) en de productie top 15 door bijen bestoven gewassen in de VS op een 2e y-as aan de rechterkant, met een x-as van jaren 2010 t/m 2017. Dit doet het door middel van meerdere lijnen, waarbij de gewassen selecteerbaar aan/uit zijn d.m.v. een checkbox. De desbetreffende gewassen zijn: appel, peer, kers, blauwe bes, aardbij, en abrikoos (deze zijn uit een grote lijst van bijbestuiving afhankelijke gewassen gekozen voor hun productie in meerdere staten en jaartallen). Elke lijn krijgt een andere kleur, met 0 t/m 15 gewassen lijnen zichtbaar (door de checkbox).
 
 * De standaard data na het laden van de site is van heel de Verenigde Staten. De data is gelinkt aan fig 1: datamap. Als een staat wordt aangeklikt, zal de data in dit figuur alleen de data van de geselecteerde staat laten zien.
 
