@@ -22,7 +22,8 @@ stID: 10779272*
 
 ## Data bronnen
 * De data wordt opgeslagen in excel, waarna de onnodige colommen en teksten worden verwijderd en het bestand wordt opgeslagen als .csv bestand.
-Deze csv files zullen vervolgens geconverteerd worden naar .json (index:order) m.b.v. (python.v3) pandas.
+Deze csv files zullen vervolgens geconverteerd worden naar .json (index:order) m.b.v. (python.v3) pandas. Maandelijkse data zal zo goed mogelijk worden geconverteerd naar jaarlijkse data. De manier hiervoor is afhankelijk van de aard van de data.
+
 
 https://data.world/finley/bee-colony-statistical-data-from-1987-2017
 Bee Colony Loss.xlsx, transformatie: relevante data naar json
@@ -35,7 +36,7 @@ https://usda.library.cornell.edu/concern/publications/rn301137d?locale=en
 Honey bee colonies: Hier staat ook de data in van bee loss causation.
 Alle gegeven jaren zullen worden gebruikt (2015 t/m 2017). Transformatie: relevante data (alleen waardes) zal eerst in een excel worden gezet, waarna het als .csv kan worden opgeslagen, waarna het kan worden geconverteerd naar .json (index:order) m.b.v. (python v3) pandas.
 
-##### Selecteerbare datasets aan de hand van een stapsgewijs selectieproces:
+### Selecteerbare datasets aan de hand van een stapsgewijs selectieproces:
 Select Commodity => SURVEY => ANIMALS & PRODUCTS => SPECIALTY => HONEY => selecteer je gewilde data
 * Select Location => STATE => selecteer alle staten met shift + arrowdown
 * Select Time => alle mogelijke jaren => gelieve jaarlijks, maar maandelijks kan ook =>
@@ -47,6 +48,15 @@ H. bijenverlies -dead out per staat (2015-2018)
 
 https://quickstats.nass.usda.gov/results/BA791169-025D-3218-9BAE-A9939FCC31FD
 Honing productie per staat in $, in lb, en in lb per colony. (1987 - 2018)
+
+
+
+
+
+
+
+
+#### De volgende datasets zijn optionele datasets die eventueel nog van pas kunnen komen (ze vallen ieder onder de selecteerbare datasets)
 
 https://quickstats.nass.usda.gov/results/299B60B7-FB53-360C-83E5-307DE83D0F2C
 Toegevoegde en vervangen bijenkolonies (2015-2018)
@@ -69,7 +79,14 @@ H bijenkolonies die geplaagd zijn door andere oorzaken (2015-2018)
 https://quickstats.nass.usda.gov/results/C769DC43-9959-3261-80E3-B34D60BDCEDD
 H bijenkolonies die geplaagd zijn door *Varroa* mijten (2015 - 2018)
 
+https://quickstats.nass.usda.gov/results/3EF59899-1B2C-3769-B841-897F6BC0939C
+H bijenkolonies die geplaagd zijn door pesten, exlusief *Varroa* mijten (2015 - 2018)
 
+https://quickstats.nass.usda.gov/results/1D79AB61-B3AD-398B-BB7F-52F7CD9A734A
+H bijenkolonies die geplaagd zijn door pesticide (2015 - 2018)
+
+https://quickstats.nass.usda.gov/results/32EBC3DE-775F-39B1-9858-4B617FCDD7A6
+H bijenkolonies die geplaagd zijn door onbekende factoren (2015 - 2018)
 
 
 
