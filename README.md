@@ -5,6 +5,8 @@ Deze course focust op processing en visualiseren van een of meerdere eigen
 datasets voor ondersteuning in het begrijpen van het probleem, en oplossingen
 voor dit project.
 
+Thomas Verouden
+
 
 # Probleem
 Van de 100 gewassen soorten die wereldwijd 90% van het voedsel leveren, worden
@@ -25,7 +27,7 @@ meer zal worden gedaan om dit probleem te verhelpen.
 ![Sketch](doc/paint_sketch_MVP_small.png?raw=true "Sketch")
 
 #### Fig 1. Datamap van Jaarlijkse Bijen sterfte per staat in de VS.
-De data is selecteerbaar per jaar m.b.v. een dropdown selector (1987 - 2018).
+De data is selecteerbaar per jaar m.b.v. een dropdown selector (2010 t/m 2017).
 
 De kleur is een indicatie voor de bijensterfte (donkerder = meer sterfte).
 
@@ -35,7 +37,7 @@ On click: 2 gelinkte grafieken zullen de dataset gebruiken van die specifieke st
 
 
 #### Fig 2. Multiple Line-chart van Totale bijenverlies(%) met het wilde vegetatieverlies(%) per jaar.
-De default data is van de VS in zijn geheel (1987-2018).
+De default data is van de VS in zijn geheel (2010 t/m 2017).
 
 De data veranderd naar die van de geselecteerde staat in de Datamap.
 
@@ -53,7 +55,7 @@ Titel geeft aan welke dataset wordt gebruikt (VS of geklikte staat).
 
 Data kan worden gereset naar geheel VS met een RESET knop, jaar is nog bepaald door de dropdown selector.
 
-On hover: d3-tooltip met Causatie + bijensterfte(%0.)
+On hover: d3-tooltip met Causatie + bijensterfte(%)
 
 
 
@@ -99,6 +101,7 @@ selecteerbare datasets aan de hand van een stapsgewijs selectieproces.
 # Similar visualisations
 geen hadden (gelinkte) interactie, nog geen taartdiagram van causatie gevonden.
 wel al bijen afname per staat, in een map, met kleuren als indicatie voor afname, wat ik ook kan doen.
+
 
 # Moeilijkste gedeelte
 Datamaps werkend krijgen (met d3 v5 en v3), met ook nog linked view, dit is in de vorige opdracht nog niet goed gelukt. Om dit te verhelpen kan ik de map als eerste implementeren, zodat eventuele problemen vroeg in het project kunnen worden verholpen.
