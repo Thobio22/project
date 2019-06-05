@@ -20,10 +20,10 @@
 
 * In DESIGN.md meer in detail geschreven over processen, alleen nog geen functie namen/visueel diagram.
 
-* Datasets toegevoegd, zowel voor mvp, als optionele, als zou-misschien-van-pas-komen optionele datasets.
+* Datasets toegevoegd, zowel voor mvp, als optionele, als zou-misschien-van-pas-komen optionele datasets. Ik heb ervoor gekozen om maar 6 gewassen (die afhankelijk zijn van bijenbestuiving) te gebruiken, omdat de eerdere 15 te veel werk zouden zijn om hun productie naar bruikbare waardes te maken, en omdat niet elke staat genoeg van de specifieke gewassen produceert om in de datasets terecht te komen, en de verschillen in aanwezige jaren van productie data. Deze 6 hebben ook gelimiteerde jaar- en staat-ranges, maar minder dan de anderen. Ook heb ik voor deze 6 gewassen gekozen, omdat ze vrij westers zijn, en bekend in Nederland, zodat westerse/nederlandse lezers beter kunnen relateren.
 
 
 ## 05-06-2019
 * Standup:
 
-* Aan de hand van de standup feedback: fig 2. wil ik, naast bijensterfte, alleen 1 bekend, westers gewas gebruiken, waar Nederlanders zich goed aan kunnen relateren. Als optioneel wil ik dan meerdere gewassen selecteerbaar maken, zodat er meerdere lijnen zichtbaar zijn. Dit heb ik nu ook zo aangepast in DESIGN.md. Als alternatief kan ik 1 lijn (gewicht/acre productie) maken uit de gekozen gewassen voor *mvp*, met een checkbox om de gewassen individueel te laten zien voor *optioneel*.
+* Aan de hand van de standup feedback: fig 2. wil ik, naast bijensterfte, alleen 1 bekend, westers gewas gebruiken, waar Nederlanders zich goed aan kunnen relateren. Als optioneel wil ik dan meerdere gewassen selecteerbaar maken, zodat er meerdere lijnen zichtbaar zijn. Dit heb ik nu ook zo aangepast in DESIGN.md. Als alternatief kan ik 1 lijn (gewicht/acre productie) maken uit de gekozen gewassen voor *mvp*, met een checkbox om de gewassen individueel te laten zien voor *optioneel*. Ik heb hiervoor gekozen, omdat
