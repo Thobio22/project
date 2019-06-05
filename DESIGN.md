@@ -150,7 +150,7 @@ Hier zullen de componenten van de visualisatie worden uitgelegd, opgesplitst in 
 * De [RESET] knop zal nu ook alle highlights ongedaan maken.
 
 #### Fig 2. Extra gewassen productie, tot een gemiddelde, of meerdere lijnen.
-* De desbetreffende gewassen extra zijn: peer, kers, blauwe bes, aardbij, en abrikoos.
+* De desbetreffende gewassen extra zijn: appel, peer, kers, blauwe bes, aardbij, en abrikoos.
 
 
 #### Fig 3. Extra interactie op de pie-chart

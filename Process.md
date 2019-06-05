@@ -11,6 +11,7 @@
 * De scatteroplot zal niet meer selecteerbaar zijn per staat, omdat er anders maar 1 punt uit komt voor de hele grafiek. Hierdoor is de scatterplot met bijensterfte(%) tegen honingproductie(lb of in colonies) nu fig 4, en dus niet deel van de minimum viable product. Dit is zodat het niet deel van de linked-view datamap hoeft te zijn, en kan het data laten zien per jaar.  
 
 
+
 ## 04-06-2019
 * DESIGN.md aangemaakt
 
@@ -23,9 +24,14 @@
 * Datasets toegevoegd, zowel voor mvp, als optionele, als zou-misschien-van-pas-komen optionele datasets. Ik heb ervoor gekozen om maar 6 gewassen (die afhankelijk zijn van bijenbestuiving) te gebruiken, omdat de eerdere 15 te veel werk zouden zijn om hun productie naar bruikbare waardes te maken, en omdat niet elke staat genoeg van de specifieke gewassen produceert om in de datasets terecht te komen, en de verschillen in aanwezige jaren van productie data. Deze 6 hebben ook gelimiteerde jaar- en staat-ranges, maar minder dan de anderen. Ook heb ik voor deze 6 gewassen gekozen, omdat ze vrij westers zijn, en bekend in Nederland, zodat westerse/nederlandse lezers beter kunnen relateren.
 
 
+
 ## 05-06-2019
 * Standup:
     * Enriko: Fig 2. lijnen per gewas zal waarschijnlijk te druk worden.
     * Teska & Pascalle: Fig 2. Misschien een idee om een totale gewassen productie/yield te gebruiken, in plaats van de 6 gewassen.
 
 * Aan de hand van de standup feedback: fig 2. wil ik, naast bijensterfte, alleen 1 bekend, westers gewas gebruiken, waar Nederlanders zich goed aan kunnen relateren. Als optioneel wil ik dan meerdere gewassen selecteerbaar maken, zodat er meerdere lijnen zichtbaar zijn. Dit heb ik nu ook zo aangepast in DESIGN.md. Als alternatief kan ik 1 lijn (gewicht/acre productie) maken uit de gekozen gewassen voor *mvp*, met een checkbox om de gewassen individueel te laten zien voor *optioneel*. Ik heb hiervoor gekozen, omdat het anders toch te veel werk wordt om de data van alle gewassen om te zetten tot werkbare data, die allen overeenkomt in waardes. Voor nu denk ik dat 1 gewas genoeg is voor de *mvp*, met de andere gewassen nog beschikbaar en kiesbaar voor optionele aanpassingen.
+
+* Begonnen met het schoonmaken van de data in project.py . De datasets van www.quickstats.nass.usda.gov is eerst met excel op komma gedeeld. Dit niet gedaan in python, omdat (vermoedelijk) alle colom titels als 1 titel string werden beschouwd, waardoor pandas er niets mee kon. Eenmaal via excel appel_data.csv getransformeerd te hebben, kon het met pandas bewerkt worden als dataframe. Er waren een aantal waardes gevonden die aangaven dat er niet een waarde was doorgegeven voor die staat op dat jaar, door "(X)", "(NA)", en "(D)". Ik heb al deze waardes naar "(NA)" geconverteerd voor gemak.
+
+* Na korte bespreking met TA Jasper heb ik besloten deze waardes te extrapoleren, door het gemiddelde handmatig te berekenen van de twee aangrenzende jaren data. Ook heb ik besloten om de dataset in te korten, door alleen de jaren te gebruiken die in de linechart moeten komen te staan.
