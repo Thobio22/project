@@ -7,7 +7,7 @@ stID: 10779272*
 
 ## Data bronnen
 * De data wordt opgeslagen in excel, waarna de onnodige colommen en teksten worden verwijderd en het bestand wordt opgeslagen als .csv bestand.
-Deze csv files zullen vervolgens geconverteerd worden naar .json (index:order) m.b.v. (python.v3) pandas. Maandelijkse data zal zo goed mogelijk worden geconverteerd naar jaarlijkse data. De manier hiervoor is afhankelijk van de aard van de data.
+* Deze csv files zullen vervolgens geconverteerd worden naar .json (index:order) m.b.v. (python v3) pandas. Maandelijkse data zal zo goed mogelijk worden geconverteerd naar jaarlijkse data. De manier hiervoor is afhankelijk van de aard van de data.
 
 
 https://data.world/finley/bee-colony-statistical-data-from-1987-2017
@@ -35,7 +35,7 @@ https://quickstats.nass.usda.gov/results/BA791169-025D-3218-9BAE-A9939FCC31FD
 Honing productie per staat in $, in lb, en in lb per colony. (1987 - 2018)
 
 https://quickstats.nass.usda.gov/results/80143160-AD04-3382-89A0-DEC7759CB44F
-Appel yield, production(in $ en tonnes), acres bearing (1987 - 2018)
+Appel yield (lb/acre), production(in $ en tonnes), acres bearing (1987 - 2018)
 
 https://quickstats.nass.usda.gov/results/6ACA3AE6-9517-33D4-B04E-83800CE9FB29
 Peer yield(in tons per acre), production in $ (2007 - 2018) (gelimiteerde aantal staten selecteerbaar)
