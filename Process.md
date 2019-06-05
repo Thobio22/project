@@ -12,3 +12,18 @@
 
 
 ## 04-06-2019
+* DESIGN.md aangemaakt
+
+* In plaats van wilde vegetatie in fig 2.: gewassen afhankelijk van bijenbestuiving. Ik heb hiervoor gekozen, omdat ik veel data al had gevonden op een eerdere data source over deze productie in de Verenigde Staten, en op dat moment minder of niets over wilde vegetatie verlies.
+
+* Na feedback van mentor: optioneel een checkbox bij fig 2. waarbij de verschillende gewassen selecteerbaar zijn, waardoor de lijnen zichtbaar of juist niet zichtbaar worden in de linechart. Zo kan er gekozen worden welke gewassen de kijker wilt zien, tegenover bijensterfte.
+
+* In DESIGN.md meer in detail geschreven over processen, alleen nog geen functie namen/visueel diagram.
+
+* Datasets toegevoegd, zowel voor mvp, als optionele, als zou-misschien-van-pas-komen optionele datasets.
+
+
+## 05-06-2019
+* Standup:
+
+* Aan de hand van de standup feedback: fig 2. wil ik, naast bijensterfte, alleen 1 bekend, westers gewas gebruiken, waar Nederlanders zich goed aan kunnen relateren. Als optioneel wil ik dan meerdere gewassen selecteerbaar maken, zodat er meerdere lijnen zichtbaar zijn. Dit heb ik nu ook zo aangepast in DESIGN.md. Als alternatief kan ik 1 lijn (gewicht/acre productie) maken uit de gekozen gewassen voor *mvp*, met een checkbox om de gewassen individueel te laten zien voor *optioneel*.
