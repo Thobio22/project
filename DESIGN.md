@@ -118,7 +118,7 @@ Hier zullen de componenten van de visualisatie worden uitgelegd, opgesplitst in 
 #### Fig 2. Multiple Line-chart van Totale bijenverlies(%) met het wilde vegetatieverlies(%) per jaar.
 * In de body van de .html file wordt een div gemaakt onder de datamap div. Hierin zullen figuur 2 en 3 naast elkaar worden gezet.
 
-* De data die deze linechart laat zien is de totale bijensterfte(%) en de productie top 15 door bijen bestoven gewassen in de VS op een 2e y-as aan de rechterkant, met een x-as van jaren 2010 t/m 2017. Dit doet het door middel van meerdere lijnen, waarbij de gewassen selecteerbaar aan/uit zijn d.m.v. een checkbox. De desbetreffende gewassen zijn: appel, peer, kers, blauwe bes, aardbij, en abrikoos (deze zijn uit een grote lijst van bijbestuiving afhankelijke gewassen gekozen voor hun productie in meerdere staten en jaartallen). Elke lijn krijgt een andere kleur, met 0 t/m 15 gewassen lijnen zichtbaar (door de checkbox).
+* De data die deze linechart laat zien is de totale bijensterfte(%) en de productie top 15 door bijen bestoven gewassen in de VS op een 2e y-as aan de rechterkant, met een x-as van jaren 2010 t/m 2017. Dit doet het door middel van meerdere lijnen, waarbij de gewassen selecteerbaar aan/uit zijn d.m.v. een checkbox. Het desbetreffende gewas is: appel (deze is uit een grote lijst van bijbestuiving afhankelijke gewassen gekozen voor de productie in meerdere staten en jaartallen). Elke lijn krijgt een andere kleur, met 0 t/m 15 gewassen lijnen zichtbaar (door de checkbox).
 
 * De standaard data na het laden van de site is van heel de Verenigde Staten. De data is gelinkt aan fig 1: datamap. Als een staat wordt aangeklikt, zal de data in dit figuur alleen de data van de geselecteerde staat laten zien.
 
@@ -148,6 +148,9 @@ Hier zullen de componenten van de visualisatie worden uitgelegd, opgesplitst in 
 * Een checkbox voor selectie van de verschillende gewassen die in figuur 2 worden laten zien. Bij selectie van de gewenste gewassen zal het figuur alleen de gekozen gewassen lijnen laten zien (bijensterfte is altijd aan). Deze checkbox kan eventueel worden verwerkt in de legenda, waardoor je de legenda punten kunt aanklikken voor de gewenste data.
 
 * De [RESET] knop zal nu ook alle highlights ongedaan maken.
+
+#### Fig 2. Extra gewassen productie, tot een gemiddelde, of meerdere lijnen.
+* De desbetreffende gewassen extra zijn: peer, kers, blauwe bes, aardbij, en abrikoos.
 
 
 #### Fig 3. Extra interactie op de pie-chart
