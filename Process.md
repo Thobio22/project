@@ -34,4 +34,10 @@
 
 * Begonnen met het schoonmaken van de data in project.py . De datasets van www.quickstats.nass.usda.gov is eerst met excel op komma gedeeld. Dit niet gedaan in python, omdat (vermoedelijk) alle colom titels als 1 titel string werden beschouwd, waardoor pandas er niets mee kon. Eenmaal via excel appel_data.csv getransformeerd te hebben, kon het met pandas bewerkt worden als dataframe. Er waren een aantal waardes gevonden die aangaven dat er niet een waarde was doorgegeven voor die staat op dat jaar, door "(X)", "(NA)", en "(D)". Ik heb al deze waardes naar "(NA)" geconverteerd voor gemak.
 
-* Na korte bespreking met TA Jasper heb ik besloten deze waardes te extrapoleren, door het gemiddelde handmatig te berekenen van de twee aangrenzende jaren data. Ook heb ik besloten om de dataset in te korten, door alleen de jaren te gebruiken die in de linechart moeten komen te staan.
+* Na korte bespreking met TA Jasper heb ik besloten deze waardes te interpoleren (gemiddelde van het jaar ervoor en het jaar erna, van die specifieke staat). Ook heb ik besloten om de dataset in te korten, door alleen de jaren te gebruiken die in de linechart moeten komen te staan.
+
+
+## 06-06-2019
+* Standup feedback: Probeer missende data punten die je wilt interpoleren te maken m.b.v. een zelf geschreven script. Focus op alleen de datamap implementeren voor vrijdag, dus ook alleen de data set die je nodig hebt voor datamap (bijensterfte).
+
+*

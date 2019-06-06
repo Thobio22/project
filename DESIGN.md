@@ -37,6 +37,9 @@ Honing productie per staat in $, in lb, en in lb per colony. (1987 - 2018)
 https://quickstats.nass.usda.gov/results/80143160-AD04-3382-89A0-DEC7759CB44F
 Appel yield (lb/acre), production(in $ en tonnes), acres bearing (1987 - 2018)
 
+https://quickstats.nass.usda.gov/results/8D640B8E-B994-3159-A469-28F5139178ED
+Appel yield (lb/acre) (2007 - 2017)
+
 https://quickstats.nass.usda.gov/results/6ACA3AE6-9517-33D4-B04E-83800CE9FB29
 Peer yield(in tons per acre), production in $ (2007 - 2018) (gelimiteerde aantal staten selecteerbaar)
 
