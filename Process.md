@@ -40,4 +40,6 @@
 ## 06-06-2019
 * Standup feedback: Probeer missende data punten die je wilt interpoleren te maken m.b.v. een zelf geschreven script. Focus op alleen de datamap implementeren voor vrijdag, dus ook alleen de data set die je nodig hebt voor datamap (bijensterfte).
 
-*
+* bijensterfte dataset staat in periodes 2010/11 t/m 2016/17. Ik zal dit opschrijven als 2010 t/m 2016. Dit is voor de juiste progressie/overgang/linked view met de andere datasets, die wel op jan-dec jaarlijkse basis staan aangegeven. De datasets verdeeld over 3-maandelijkse periodes zullen worden samengevoegd tot ze een jan-dec jaar vormen aan data.
+
+* bijensterfte data: de data voor de staten Puerto Rico en Alaska worden uit deze dataset verwijderd, omdat er een minimaal aantal jaarpunten aanwezig zijn, en allen zijn ze leeg in de bijenverlies kolom. 
