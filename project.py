@@ -11,11 +11,10 @@ def clean_bee(dataframe):
     dataframe.columns = dataframe.columns.str.lstrip()
     dataframe.columns = dataframe.columns.str.rstrip()
 
-
-    taloss = "Total Annual Loss"
+    loss = "Total Annual Loss"
 
     # select needed columns
-    dataframe = dataframe[["Year", "State", taloss]]
+    dataframe = dataframe[["Year", "State", loss]]
 
 
     # remove the states without any data (Alaska & Puerto Rico)
@@ -23,15 +22,15 @@ def clean_bee(dataframe):
 
     dataframe = dataframe[dataframe.State != "Puerto Rico"]
 
+    # set total annual loss to numeric
+    # dataframe[loss] = float(dataframe[loss])
+    dataframe[loss] = pd.to_numeric(dataframe[loss])
 
-    # set percentage value to numeric, by removing % from string and str to numeric
-    dataframe[taloss] = dataframe[taloss].str.replace("%", "")
+    # for i in dataframe[loss]:
+    #     # print(i)
+    #     if i.isnan():
+    #         print("nan gevonden")
 
-
-    for i in dataframe[taloss]:
-        # print(i)
-        if i.isnull():
-            print("nan gevonden")
 
     return dataframe
 
@@ -48,12 +47,7 @@ def clean_crop(dataframe):
 
 
 
-    # dataframe["Value"] = pd.to_numeric(dataframe["Value"])
 
-
-    # for i in dataframe["Value"]:
-    #     if i > 999:
-    #         print(i)
 
     return dataframe
 

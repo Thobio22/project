@@ -42,4 +42,8 @@
 
 * bijensterfte dataset staat in periodes 2010/11 t/m 2016/17. Ik zal dit opschrijven als 2010 t/m 2016. Dit is voor de juiste progressie/overgang/linked view met de andere datasets, die wel op jan-dec jaarlijkse basis staan aangegeven. De datasets verdeeld over 3-maandelijkse periodes zullen worden samengevoegd tot ze een jan-dec jaar vormen aan data.
 
-* bijensterfte data: de data voor de staten Puerto Rico en Alaska worden uit deze dataset verwijderd, omdat er een minimaal aantal jaarpunten aanwezig zijn, en allen zijn ze leeg in de bijenverlies kolom. 
+* bijensterfte data: de data voor de staten Puerto Rico en Alaska worden uit deze dataset verwijderd, omdat er een minimaal aantal jaarpunten aanwezig zijn, en allen zijn ze leeg in de bijenverlies kolom.
+
+* De percentages in bee_colony_loss (bijensterfte dataset) staat in excel als type perentage. Dit zorgt voor errors in python v3 pandas, en het percentage wilt niet worden omgezet naar float. Daarom heb ik de waardes zelf handmatig in excel van data type percentage naar type getal (met 3 decimalen achter de komma) gezet.
+
+* Veel problemen met datasets die opgeslagen waren via excel. Nu in excel de decimalen aangegeven met . (ipv ,) en duizendtallen met , (ipv .). Dit fixt hopelijk het omzetten naar float probleem. 
