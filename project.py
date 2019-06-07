@@ -29,8 +29,16 @@ def clean_bee(dataframe):
 
     dataframe = dataframe[dataframe.State != "Puerto Rico"]
 
+    # set year 2010/11 to 2010, etc.
+    dataframe["Year"] = dataframe["Year"].str.replace("/11", "")
+    dataframe["Year"] = dataframe["Year"].str.replace("/12", "")
+    dataframe["Year"] = dataframe["Year"].str.replace("/13", "")
+    dataframe["Year"] = dataframe["Year"].str.replace("/14", "")
+    dataframe["Year"] = dataframe["Year"].str.replace("/15", "")
+    dataframe["Year"] = dataframe["Year"].str.replace("/16", "")
+    dataframe["Year"] = dataframe["Year"].str.replace("/17", "")
+
     # set total annual loss to numeric
-    # dataframe[loss] = float(dataframe[loss])
     dataframe[loss] = pd.to_numeric(dataframe[loss])
 
     # for i in dataframe[loss]:
