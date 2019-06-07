@@ -1,3 +1,10 @@
+# This file is for cleaning and converting .csv files to .json for use in D3 .js files
+# Name: Thomas Verouden
+# Student number: 10779272
+# python -m http.server 8888 &
+# http://localhost:8888/project.html
+
+
 import pandas as pd
 import numpy as np
 import json

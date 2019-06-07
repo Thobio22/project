@@ -46,4 +46,15 @@
 
 * De percentages in bee_colony_loss (bijensterfte dataset) staat in excel als type perentage. Dit zorgt voor errors in python v3 pandas, en het percentage wilt niet worden omgezet naar float. Daarom heb ik de waardes zelf handmatig in excel van data type percentage naar type getal (met 3 decimalen achter de komma) gezet.
 
-* Veel problemen met datasets die opgeslagen waren via excel. Nu in excel de decimalen aangegeven met . (ipv ,) en duizendtallen met , (ipv .). Dit fixt hopelijk het omzetten naar float probleem. 
+* Veel problemen met datasets die opgeslagen waren via excel. Nu in excel de decimalen aangegeven met . (ipv ,) en duizendtallen met , (ipv .). Dit fixt hopelijk het omzetten naar float probleem.
+
+## 07-06-2019
+* Standup feedback: Als het script schrijven voor nu te lang doet, kun je het voor de bijensterfte dataset misschien handmatig doen met excel.
+
+* project.html gevuld met divs voor de figuren. De interactieve componenten er in gezet (zonder linkende werking nog).
+
+* project.css aangemaakt, hier wil ik het meeste, al dan niet alle stijl opties in zetten. Dit staat nog niet vast voor elke grafiek, omdat ik nog niet goed weet hoe dit werkt voor de datamap. Background color licht geel gekozen, want bijen. De interactieve componenten een honingkleur gegeven voor dezelfde reden.
+
+* d3-tip.js en datamaps.uda.min.js toegevoegd aan de repository voor gebruik. Voor de datamap laadt ik D3v3 in, en voor al het andere dat ik project.js komt gebruik ik D3v5. Dit doe ik omdat de datamaps niet worden ondersteund door d3v5.
+
+* Handmatig de bijendata aan het extrapoleren en interpoleren. (extrapoleren vb: District of columbia, excel TREND(2011 t/m 2013 data voor datapunt 2010)
