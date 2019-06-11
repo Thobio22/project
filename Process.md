@@ -64,6 +64,6 @@
 
 
 ## 11-06-2019
-* Verder met data opschonen voor gebruik.
+* Verder met data opschonen voor gebruik. "OTHER STATES" in de gewassen data zal niet worden gebruikt voor de line-chart, omdat het niet selecteerbaar is met de datamap.
 
 * Het maken van de datamap plot.

@@ -55,17 +55,21 @@ def clean_bee(dataframe):
 def clean_crop(dataframe):
     """This cleans unnecessary, empty and invalid values of the given dataset"""
 
+    # use relevant columns only
     dataframe = dataframe[["Year", "State", "Data Item", "Value"]]
 
-    dataframe["Value"] = dataframe["Value"].str.replace(".", "")
+    # remove , from value numbers
+    dataframe["Value"] = dataframe["Value"].str.replace(",", "")
 
-    dataframe = interpolate(dataframe)
-
-
-
+    # remove unnecessary years for the linechart from the dataset
+    dataframe = dataframe[dataframe.Year != "2007"]
+    dataframe = dataframe[dataframe.Year != "2008"]
+    dataframe = dataframe[dataframe.Year != "2009"]
+    dataframe = dataframe[dataframe.Year != "2017"]
 
 
     return dataframe
+
 
 
 def interpolate(dataframe):
@@ -76,27 +80,46 @@ def interpolate(dataframe):
 
 
 
-def convert2json(dataframe):
+def convert2json(bee, apple):
     """This converts the given dataframe to a .json file"""
-    jsonFile = dataframe.to_json('bee_loss.json', orient="records")
+
+    beeJson = bee.to_json("bee_loss.json", orient="records")
+
+    appleJson = apple.to_json("apple_yield_data", orient="records")
+
+
+
+
 
 
 
 
 if __name__ == "__main__":
 
-    # read data into pandas appel_df
-    bijen_df = pd.read_csv("Datasets/bee_colony_loss.csv", delimiter=";")
+    # read data into pandas df
+    bee_df = pd.read_csv("Datasets/bee_colony_loss.csv", delimiter=";")
+
+    apple_df = pd.read_csv("Datasets/apple_yield_data", delimiter=";")
+
+
+
+
 
     # clean and convert the data
-    bijen_df = clean_bee(bijen_df)
+    bee_df = clean_bee(bee_df)
 
-    convert2json(bijen_df)
-
-
+    apple_df = clean_crop(apple_df)
 
 
-    # appel_df = pd.read_csv("Datasets/appel_yield_data.csv", delimiter=";")
+
+
+
+
+
+
+
+    convert2json(bijen_df, apple_df)
+
 
 
 
