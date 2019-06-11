@@ -58,3 +58,12 @@
 * d3-tip.js en datamaps.uda.min.js toegevoegd aan de repository voor gebruik. Voor de datamap laadt ik D3v3 in, en voor al het andere dat ik project.js komt gebruik ik D3v5. Dit doe ik omdat de datamaps niet worden ondersteund door d3v5.
 
 * Handmatig de bijendata aan het extrapoleren en interpoleren. (extrapoleren vb: District of columbia, excel TREND(2011 t/m 2013 data voor datapunt 2010)
+
+## 10-06-2019
+* Alleen aan data opschonen gezeten. Missende datapunten zullen worden geextrapoleerd of geinterpoleerd waar toepasbaar (in excel zelf voor gemak). Extrapoleren wordt gedaan met behulp van de =trend() functie in excel. Interpoleren wordt gedaan door het gemiddelde te pakken van de twee aangrenzende waardes (1 jaar eerder, 1 jaar later).
+
+
+## 11-06-2019
+* Verder met data opschonen voor gebruik.
+
+* Het maken van de datamap plot.

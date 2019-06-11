@@ -38,6 +38,7 @@ def clean_bee(dataframe):
     dataframe["Year"] = dataframe["Year"].str.replace("/16", "")
     dataframe["Year"] = dataframe["Year"].str.replace("/17", "")
 
+
     # set total annual loss to numeric
     dataframe[loss] = pd.to_numeric(dataframe[loss])
 
@@ -77,7 +78,7 @@ def interpolate(dataframe):
 
 def convert2json(dataframe):
     """This converts the given dataframe to a .json file"""
-    jsonFile = appel_df.to_json('appel_data.json', orient="records")
+    jsonFile = dataframe.to_json('bee_loss.json', orient="records")
 
 
 
@@ -87,8 +88,10 @@ if __name__ == "__main__":
     # read data into pandas appel_df
     bijen_df = pd.read_csv("Datasets/bee_colony_loss.csv", delimiter=";")
 
-    # clean the data
+    # clean and convert the data
     bijen_df = clean_bee(bijen_df)
+
+    convert2json(bijen_df)
 
 
 
