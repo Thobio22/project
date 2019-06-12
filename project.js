@@ -27,10 +27,10 @@ window.onload = function() {
 function getMapDataset(dataset) {
 
   // list of all ISO of the used countries
-  mapISO = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", \
-            "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", \
-            "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", \
-            "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", \
+  mapISO = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
+            "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA",
+            "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY",
+            "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX",
             "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 
 
@@ -40,15 +40,15 @@ function getMapDataset(dataset) {
   mapISO.forEach(function(d, i) {
     console.log(d, i)
     stateData[d] = {
-      
+      ""
 
 
 
 
     }
-  }
+  });
 
 
-  return
+  return stateData
 
 };

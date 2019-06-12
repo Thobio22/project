@@ -67,3 +67,8 @@
 * Verder met data opschonen voor gebruik. "OTHER STATES" in de gewassen data zal niet worden gebruikt voor de line-chart, omdat het niet selecteerbaar is met de datamap.
 
 * Het maken van de datamap plot.
+
+## 12-06-2019
+* Besloten om de bij de datasets alleen de yield in weight/acre te nemen (dus geen production in total, etc) voor gemak in gebruik, aangezien hetr verwijderen van rijen in pandas niet goed lukt. pear_data.csv: https://quickstats.nass.usda.gov/results/E83FEECB-C6E3-37B4-B4EA-BE9380C2BD19. Dit wordt gedaan door alleen YIELD --> WEIGHT / ACRE in de selectiemoegelijkheden.
+
+* In excel zullen de staat ISO codes worden toegevoegd aan bee_colony_loss voor datamap. Dit doe ik, omdat dit het makkelijkst te doen is in excel, en tijd bespaard voor de data selecteren voor de datamap. MultistateOperation zal handmatig worden verwijderd, aangezien het niet te linken is aan een staat.
