@@ -26,8 +26,6 @@ def clean_bee(dataframe):
 
 
     # drop unneeded columns
-
-
     dataframe = dataframe[["State", loss]]
 
 
@@ -36,28 +34,25 @@ def clean_bee(dataframe):
 
     dataframe = dataframe.drop(index="PR", level=1)
 
-    print(dataframe)
 
     # dataframe = dataframe[dataframe.State != "Alaska"]
     #
     # dataframe = dataframe[dataframe.State != "Puerto Rico"]
 
 
-    # set year 2010/11 to 2010, etc.
-    dataframe["Year"] = dataframe["Year"].str.replace("/11", "")
-    dataframe["Year"] = dataframe["Year"].str.replace("/12", "")
-    dataframe["Year"] = dataframe["Year"].str.replace("/13", "")
-    dataframe["Year"] = dataframe["Year"].str.replace("/14", "")
-    dataframe["Year"] = dataframe["Year"].str.replace("/15", "")
-    dataframe["Year"] = dataframe["Year"].str.replace("/16", "")
-    dataframe["Year"] = dataframe["Year"].str.replace("/17", "")
+    ## set index year 2010/11 to 2010, etc.
+    # dataframe["Year"] = dataframe["Year"].str.replace("/11", "")
+    # dataframe["Year"] = dataframe["Year"].str.replace("/12", "")
+    # dataframe["Year"] = dataframe["Year"].str.replace("/13", "")
+    # dataframe["Year"] = dataframe["Year"].str.replace("/14", "")
+    # dataframe["Year"] = dataframe["Year"].str.replace("/15", "")
+    # dataframe["Year"] = dataframe["Year"].str.replace("/16", "")
+    # dataframe["Year"] = dataframe["Year"].str.replace("/17", "")
 
 
     # set values to numeric
     dataframe[loss] = pd.to_numeric(dataframe[loss])
     dataframe["Year"] = pd.to_numeric(dataframe["Year"])
-
-    dataframe.set_index(["Year", "State_ISO"])
 
 
     return dataframe
@@ -82,8 +77,8 @@ def clean_crop(dataframe):
     value = "Value_Kg_per_Acre"
 
 
-    # # use relevant columns only
-    # dataframe = dataframe[["Year", "State", "State_ISO", value]]
+    # use relevant columns only
+    dataframe = dataframe[["State", value]]
 
 
     # remove , from value numbers
@@ -91,11 +86,18 @@ def clean_crop(dataframe):
 
 
     # remove unnecessary years for the linechart from the dataset
-    dataframe = dataframe[dataframe.Year != 2007]
-    dataframe = dataframe[dataframe.Year != 2008]
-    dataframe = dataframe[dataframe.Year != 2009]
-    dataframe = dataframe[dataframe.Year != 2017]
-    dataframe = dataframe[dataframe.Year != 2018]
+    dataframe = dataframe.drop(index=2007, level=0)
+    dataframe = dataframe.drop(index=2008, level=0)
+    dataframe = dataframe.drop(index=2009, level=0)
+    dataframe = dataframe.drop(index=2017, level=0)
+    dataframe = dataframe.drop(index=2018, level=0)
+
+
+    # dataframe = dataframe[dataframe.Year != 2007]
+    # dataframe = dataframe[dataframe.Year != 2008]
+    # dataframe = dataframe[dataframe.Year != 2009]
+    # dataframe = dataframe[dataframe.Year != 2017]
+    # dataframe = dataframe[dataframe.Year != 2018]
 
 
     # pprint(dataframe)
@@ -103,23 +105,22 @@ def clean_crop(dataframe):
 
 
 
-    # set all different weight values to kg / acre
-    dataframe[value] = pd.to_numeric(dataframe[value].str.replace(",", ""))
+    # set all different weight values to kg / acre, coerce errors to get NaN values on invalids
+    dataframe[value] = pd.to_numeric(dataframe[value], errors="coerce")
 
     print("pass")
 
 
-    # set index of dataframe
-    dataframe.set_index(["Year", "State_ISO"])
+    # # set index of dataframe
+    # dataframe.set_index(["Year", "State_ISO"])
 
 
     return dataframe
 
 
 
-def data_to_nested_dict(df, name):
+def dump_in_json(df, name):
 
-    nested_dict = df.groupby(level=0).apply(lambda df: df.xs(df.name).to_dict(orient="index")).to_dict()
 
     with open (name + ".json", "w") as infile:
         json.dump(nested_dict, infile)
@@ -132,12 +133,16 @@ if __name__ == "__main__":
 
     bee_df = pd.read_csv("Datasets/bee_colony_loss.csv", delimiter=";", index_col = ["Year", "State ISO"])
 
+    apple_df = pd.read_csv("Datasets/apple_yield_data.csv", delimiter=";", index_col = ["Year", "State ISO"])
+
+    pear_df = pd.read_csv("Datasets/pear_data.csv", delimiter=";", index_col = ["Year", "State ISO"])
+
 
     # bee_df = pd.read_csv("Datasets/bee_colony_loss.csv", delimiter=";", usecols=["Year", "State", "State ISO", "Total Annual Loss"])
-
-    apple_df = pd.read_csv("Datasets/apple_yield_data.csv", delimiter=";", usecols=["Year", "State", "State ISO", "Value Kg per Acre"])
-
-    pear_df = pd.read_csv("Datasets/pear_data.csv", delimiter=";", usecols=["Year", "State", "State ISO", "Value Kg per Acre"])
+    #
+    # apple_df = pd.read_csv("Datasets/apple_yield_data.csv", delimiter=";", usecols=["Year", "State", "State ISO", "Value Kg per Acre"])
+    #
+    # pear_df = pd.read_csv("Datasets/pear_data.csv", delimiter=";", usecols=["Year", "State", "State ISO", "Value Kg per Acre"])
 
 
 
@@ -159,6 +164,6 @@ if __name__ == "__main__":
 
 
     # # convert the data to json
-    # data_to_nested_dict(bee_df, "bee_colony_loss")
-    # data_to_nested_dict(apple_df, "apple_yield")
-    # data_to_nested_dict(pear_df, "pear_yield")
+    # dump_in_json(bee_df, "bee_colony_loss")
+    # dump_in_json(apple_df, "apple_yield")
+    # dump_in_json(pear_df, "pear_yield")
