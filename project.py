@@ -52,7 +52,6 @@ def clean_bee(dataframe):
 
     # set values to numeric
     dataframe[loss] = pd.to_numeric(dataframe[loss])
-    dataframe["Year"] = pd.to_numeric(dataframe["Year"])
 
 
     return dataframe
@@ -71,13 +70,11 @@ def clean_crop(dataframe):
     dataframe.columns = dataframe.columns.str.replace(" ", "_")
 
 
-    # set years to numeric
-    dataframe["Year"] = pd.to_numeric(dataframe["Year"])
-
-    value = "Value_Kg_per_Acre"
 
 
     # use relevant columns only
+    value = "Value_Kg_per_Acre"
+
     dataframe = dataframe[["State", value]]
 
 
@@ -100,16 +97,8 @@ def clean_crop(dataframe):
     # dataframe = dataframe[dataframe.Year != 2018]
 
 
-    # pprint(dataframe)
-    print(dataframe.index)
-
-
-
     # set all different weight values to kg / acre, coerce errors to get NaN values on invalids
     dataframe[value] = pd.to_numeric(dataframe[value], errors="coerce")
-
-    print("pass")
-
 
     # # set index of dataframe
     # dataframe.set_index(["Year", "State_ISO"])
@@ -119,11 +108,16 @@ def clean_crop(dataframe):
 
 
 
-def dump_in_json(df, name):
+def dump_in_json(dataframe, name):
+    """Converts dataframe to nested dictionary and dumps it in a json file"""
 
+    nested_dict = dataframe.groupby(level=0).apply(lambda dataframe: dataframe.xs(dataframe.name).to_dict(orient="index")).to_dict()
+    print(nested_dict)
 
     with open (name + ".json", "w") as infile:
         json.dump(nested_dict, infile)
+
+    # jsonFile = dataframe.to_json(name + ".json")
 
 
 
@@ -154,16 +148,16 @@ if __name__ == "__main__":
 
     pprint(bee_df)
 
-    # apple_df = clean_crop(apple_df)
-    #
-    # pear_df = clean_crop(pear_df)
+    apple_df = clean_crop(apple_df)
+
+    pear_df = clean_crop(pear_df)
 
 
 
 
 
 
-    # # convert the data to json
-    # dump_in_json(bee_df, "bee_colony_loss")
-    # dump_in_json(apple_df, "apple_yield")
-    # dump_in_json(pear_df, "pear_yield")
+    # convert the data to json
+    dump_in_json(bee_df, "bee_colony_loss")
+    dump_in_json(apple_df, "apple_yield")
+    dump_in_json(pear_df, "pear_yield")
