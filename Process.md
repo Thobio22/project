@@ -79,4 +79,12 @@
 
 * Data zit nu in nested dictionary: index = ["Year", "State ISO"]. Dit is handig voor het selecteren van de data: de slider selecteerd het jaar van alle grafieken, de state ISO is dan voor de map (map data wordt: dataset[geselcteerde jaar]). De data die wordt doorgegeven van slider naar line/pie is het jaar + eventueel geselecteerde staat (standaard gehele VS). Als een staat geselecteerd is, en daarna met de slider een ander jaar wordt gegeven, moet de vorige staat onthouden worden.
 
-* Eindelijk data in de juiste formaat gekregen (nested dictionary). Dit kan ik nu toepassen op mijn andere datasets
+* Eindelijk data in de juiste formaat gekregen (nested dictionary). Dit kan ik nu toepassen op mijn andere datasets. De dataset heb ik vervolgens met json.dump in een json file moeten zetten.
+
+
+## 13-06-2019
+* Standup feednback: alles wat ik nu doe vergt gewoon tijd.
+
+* Map heb ik kunnen tekenen, al zijn er nog wat fouten in de data: sommige bijenverlies percentages zijn float met 10 decimalen, en anderen weer niet. De bee_colony_loss.json die wordt gebruikt voor het tekenen van de map wordt niet geupdate, ook al typ ik er handmatig wat bij.
+
+* map + pie-chart aan het maken. Voor pie-chart en line-chart gebruik ik d3-graph-gallery.com

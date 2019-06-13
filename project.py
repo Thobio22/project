@@ -51,7 +51,7 @@ def clean_bee(dataframe):
 
 
     # set values to numeric
-    dataframe[loss] = pd.to_numeric(dataframe[loss])
+    dataframe[loss] = round(pd.to_numeric(dataframe[loss]), 3)
 
 
     return dataframe
@@ -112,7 +112,6 @@ def dump_in_json(dataframe, name):
     """Converts dataframe to nested dictionary and dumps it in a json file"""
 
     nested_dict = dataframe.groupby(level=0).apply(lambda dataframe: dataframe.xs(dataframe.name).to_dict(orient="index")).to_dict()
-    print(nested_dict)
 
     with open (name + ".json", "w") as infile:
         json.dump(nested_dict, infile)
