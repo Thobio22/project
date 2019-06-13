@@ -88,3 +88,5 @@
 * Map heb ik kunnen tekenen, al zijn er nog wat fouten in de data: sommige bijenverlies percentages zijn float met 10 decimalen, en anderen weer niet. De bee_colony_loss.json die wordt gebruikt voor het tekenen van de map wordt niet geupdate, ook al typ ik er handmatig wat bij.
 
 * map + pie-chart aan het maken. Voor pie-chart en line-chart gebruik ik d3-graph-gallery.com
+
+* Idee voor updaten van grafieken aan de hand van slider als een staat al is geselecteerd: Jaar en Staat worden opgeslagen als globale variabelen. Als er .onchange() (verandering) aan de slider wordt aangebracht, moet het een functie aanroepen wat de oude variabelen checkt, en de nieuwe omzet, en daar de figuren opnieuw mee tekent. 
