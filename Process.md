@@ -89,4 +89,15 @@
 
 * map + pie-chart aan het maken. Voor pie-chart en line-chart gebruik ik d3-graph-gallery.com
 
-* Idee voor updaten van grafieken aan de hand van slider als een staat al is geselecteerd: Jaar en Staat worden opgeslagen als globale variabelen. Als er .onchange() (verandering) aan de slider wordt aangebracht, moet het een functie aanroepen wat de oude variabelen checkt, en de nieuwe omzet, en daar de figuren opnieuw mee tekent. 
+* Idee voor updaten van grafieken aan de hand van slider als een staat al is geselecteerd: Jaar en Staat worden opgeslagen als globale variabelen. Als er .onchange() (verandering) aan de slider wordt aangebracht, moet het een functie aanroepen wat de oude variabelen checkt, en de nieuwe omzet, en daar de figuren opnieuw mee tekent.
+
+## 14-06-2019
+* Meeting met Jasper: uitleg gekregen over color scale, inspiratie voor een update functie die kan worden aangeroepen, kleine duw in de rug dat het nog wel fout kan gaan, dus probeer alles zo snel mogelijk zo veel mogelijk af te hebben, zodat je meteen alle vragen maandag er uit kunt werken.
+
+* Standup met Enrikos: stukje uitgelegd over hoe zijn data update, voor inspiratie. Deadline vast gesteld voor mijzelf voor komende maandag: Alle benodigde data ingeladen + juiste formaat; Alle 3 de grafieken af (eventueel met linked view); Eventueel een 4e grafiek met honingproductie; Kijk naar bootstrap voor verhaal aparte pagina. Nodig:
+    * data causatie + al het fruit.
+    * data honingproductie
+    * piechart verder afwerken met transitie en update
+    * linechart maken + update
+    * kleuren scaler voor datamap
+    * update functie(?) die jaar en staat doorgeeft om de grafieken te updaten. klik aan figuur/slider roept update functie aan, die de andere figuren update met de meegegeven staat/jaar.

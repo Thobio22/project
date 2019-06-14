@@ -81,7 +81,7 @@ window.onload = function() {
 // };
 
 
-function drawMap(dataset) {
+function drawMap(dataset, year) {
   console.log("START DRAW MAP")
 
   // draw map
@@ -101,7 +101,7 @@ function drawMap(dataset) {
                 defaultFill: "grey"
               },
               scope: "usa",
-              data: dataset,
+              data: dataset[year],
               geographyConfig: {
                 popupOnHover: true,
                 highlightOnHover: true,
