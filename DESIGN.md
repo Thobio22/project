@@ -43,17 +43,17 @@ Appel yield (lb/acre) (2007 - 2017)
 https://quickstats.nass.usda.gov/results/6ACA3AE6-9517-33D4-B04E-83800CE9FB29
 Peer yield(in tons per acre), production in $ (2007 - 2018) (gelimiteerde aantal staten selecteerbaar)
 
-https://quickstats.nass.usda.gov/results/146E5063-20DD-3146-BE36-25B1137A1A8F
-Aarbij yield (cwt per acre), production in $ (1998 - 2018)
+https://quickstats.nass.usda.gov/results/CF94FA0D-1332-3E64-B389-CA13931A1E3A
+Aarbij yield (cwt per acre) (2010-2016)
 
-https://quickstats.nass.usda.gov/results/CC1126CA-0EC3-3B74-80EC-CFE1BB0FDD5E
-Perzik yield (tons per acre), production in tons (2003 - 2018)
+https://quickstats.nass.usda.gov/results/494B3C45-D6FF-3E5E-AFC5-833CD1CEC60D
+Perzik yield (tons per acre) 2010-2016
 
-https://quickstats.nass.usda.gov/results/B1A0842B-B922-3892-9AF2-A474499B89FB
-Kersen yield (Tons / acre), production (tons) (1998 - 2018)
+https://quickstats.nass.usda.gov/results/C65AFBF6-8C7F-3FC4-93A5-D0EAD2900D7F
+Kersen yield (Tons / acre), production (tons) 2010-2016
 
-https://quickstats.nass.usda.gov/results/A5F239B3-BC84-3F4D-A184-C7F20764A8DA
-Blauwe bessen yield(lb/acre), production (in $, en in lb) (2007 - 2018)
+https://quickstats.nass.usda.gov/results/6709C065-B1CB-3AB8-90D2-40077B6CC78E
+Blauwe bessen yield(lb/acre), tam en wild (2010 - 2016)
 
 
 * let op bij de data van de fruit gewassen, de jaartallen komen niet altijd overeen, en niet alle staten produceren genoeg om in een dataset opgeslagen te staan.
