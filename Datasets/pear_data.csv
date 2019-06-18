@@ -1,4 +1,4 @@
-Program;Year;Period;Week Ending;Geo Level;State;State ISO;State ANSI;Ag District;Ag District Code;County;County ANSI;Zip Code;Region;watershed_code;Watershed;Commodity;Data Item;Domain;Domain Category;Value;Value Kg per Acre;CV (%)
+Program;Year;Period;Week Ending;Geo Level;State;State ISO;State ANSI;Ag District;Ag District Code;County;County ANSI;Zip Code;Region;watershed_code;Watershed;Commodity;Data Item;Domain;Domain Category;Value;Value in Kg per Acre;CV (%)
 SURVEY;2010;YEAR;;STATE;CALIFORNIA;CA;6;;;;;;;0;;PEARS;PEARS - YIELD, MEASURED IN TONS / ACRE;TOTAL;NOT SPECIFIED;15.7;14243;
 SURVEY;2010;YEAR;;STATE;MICHIGAN;MI;26;;;;;;;0;;PEARS;PEARS - YIELD, MEASURED IN TONS / ACRE;TOTAL;NOT SPECIFIED;1.13;1025;
 SURVEY;2010;YEAR;;STATE;NEW YORK;NY;36;;;;;;;0;;PEARS;PEARS - YIELD, MEASURED IN TONS / ACRE;TOTAL;NOT SPECIFIED;6.92;6278;

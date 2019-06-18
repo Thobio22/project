@@ -12,6 +12,8 @@ window.onload = function() {
 
   var beeJson = "bee_colony_loss.json";
 
+  var beeLineJson = "bee_line_loss.json"
+
   var appleJson = "apple_yield.json";
 
   var requests = [d3v5.json(beeJson), d3v5.json(appleJson)]
@@ -119,8 +121,25 @@ function drawMap(dataset, year) {
 };
 
 
-function drawLinechart(dataset) {
+function drawLinechart(dataset, state) {
   // this makes the multiple-linechart based on given dataset, year and state.
+  var lineDim = {
+                top: 20,
+                right: 60,
+                left: 60,
+                bottom: 30,
+                width: 460,
+                height: 400
+                };
+
+  var svg = d3v5.select("#line_div")
+              .append("svg")
+                .attr("width", lineDim.width + lineDim.left + lineDim.right)
+                .attr("heigth", lineDim.height + lineDim.top + lineDim.bottom)
+              .append("g")
+                .attr("transform", "translate(" + lineDim.left + "," + lineDim.top + ")");
+
+  var data = dataset[year][state]
 
 
 
