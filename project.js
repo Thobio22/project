@@ -139,9 +139,51 @@ function drawLinechart(dataset, state) {
               .append("g")
                 .attr("transform", "translate(" + lineDim.left + "," + lineDim.top + ")");
 
-  var data = dataset[year][state]
+  // var data = dataset[year][state]
+
+  // create x, y scaling for placing data in svg pixels
+  var xScaleLoss = lineXscale(lineDim);
+
+  var yScaleLoss = lineYscale(lineDim);
+
+  var xScaleCrop = cropXscale(lineDim);
+
+  var yScaleCrop = cropYscale(lineDim);
 
 
+
+
+function lineXscale(lineDim) {
+  var xScale = d3v5.scaleLinear()
+                   .domain([2010, 2016])
+                   .range([lineDim.left, lineDim.width - lineDim.right]);
+
+  return xScale;
+};
+
+
+function lineYscale(lineDim) {
+  var yScale = d3v5.scaleLinear()
+                   .domain([0, 100])
+                   .range([lineDim.top, lineDim.height - lineDim.bottom]);
+
+  return yScale;
+};
+
+
+function cropXscale(lineDim) {
+  var xScale = d3v5.scaleLinear()
+                   .domain([2010, 2016])
+                   .range([lineDim.left, lineDim.width - lineDim.right])
+};
+
+
+function cropYscale(lineDim) {
+  var yScale = d3v5.scaleLinear()
+                   .domain([0, 10000000])
+                   .range([lineDim.top, lineDim.height - lineDim.bottom])
+
+};
 
 
 };
