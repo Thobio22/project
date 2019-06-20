@@ -19,7 +19,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2010;Annual;Louisiana;LA;0.636;13;0.846;6153;0.026;0.417
 2010;Annual;Maine;ME;0.869;43;0.93;5668;0.138;0.417
 2010;Annual;Maryland;MD;0.475;85;0.988;765;0.976;0.417
-2010;Annual;Massachusetts;ZO;0.607;81;0.938;539;0.837;0.417
+2010;Annual;Massachusetts;MA;0.607;81;0.938;539;0.837;0.417
 2010;Annual;Michigan;MI;0.835;99;0.97;10320;0.219;0.417
 2010;Annual;Minnesota;MN;0.425;27;0.778;38378;0.013;0.417
 2010;Annual;Mississippi;MS;0.435;7;0.571;30618;0.001;0.417
@@ -42,6 +42,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2010;Annual;South Dakota;SD;0.448;7;0.857;2802;0.035;0.417
 2010;Annual;Tennessee;TN;0.364;43;0.907;415;0.802;0.417
 2010;Annual;Texas;TX;0.302;37;0.784;44896;0.025;0.417
+2010;;Total;TO;0.417;;;;;
 2010;Annual;Utah;UT;0.271;48;0.958;2340;0.087;0.417
 2010;Annual;Vermont;VT;0.257;36;0.889;1188;0.189;0.417
 2010;Annual;Virginia;VA;0.408;176;0.977;1491;0.945;0.417
@@ -49,7 +50,6 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2010;Annual;West Virginia;WV;0.786;25;0.92;509;0.487;0.417
 2010;Annual;Wisconsin;WI;0.346;54;0.926;6987;0.14;0.417
 2010;Annual;Wyoming;WY;0.433;2;1;3883;1;0.417
-2010;;Total;TOTAL;0.417;;;;;
 2011;Annual;Alabama;AL;0.27;25;0.96;582;0.997;0.351
 2011;Annual;Arizona;AZ;0.268;7;0.714;448;0.473;0.351
 2011;Annual;Arkansas;AR;0.379;21;0.952;356;0.749;0.351
@@ -70,7 +70,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2011;Annual;Louisiana;LA;0.503;14;1;1830;1;0.351
 2011;Annual;Maine;ME;0.491;73;0.945;33389;0.03;0.351
 2011;Annual;Maryland;MD;0.373;190;0.984;1513;0.951;0.351
-2011;Annual;Massachusetts;VR;0.478;121;0.95;26013;0.032;0.351
+2011;Annual;Massachusetts;MA;0.478;121;0.95;26013;0.032;0.351
 2011;Annual;Michigan;MI;0.221;106;0.972;9699;0.131;0.351
 2011;Annual;Minnesota;MN;0.367;30;0.967;689;0.968;0.351
 2011;Annual;Mississippi;MS;0.519;4;1;40;1;0.351
@@ -93,6 +93,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2011;Annual;South Dakota;SD;0.541;2;1;41;1;0.351
 2011;Annual;Tennessee;TN;0.267;69;0.928;1192;0.828;0.351
 2011;Annual;Texas;TX;0.265;25;0.92;16189;0.048;0.351
+2011;;Total;TO;0.351;;;;;
 2011;Annual;Utah;UT;0.302;47;0.979;5874;0.064;0.351
 2011;Annual;Vermont;VT;0.171;45;0.911;1599;0.19;0.351
 2011;Annual;Virginia;VA;0.265;294;0.983;2683;0.969;0.351
@@ -100,7 +101,6 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2011;Annual;West Virginia;WV;0.427;31;0.903;555;0.517;0.351
 2011;Annual;Wisconsin;WI;0.355;71;0.958;967;0.959;0.351
 2011;Annual;Wyoming;WY;0.405;4;1;4172;1;0.351
-2011;;Total;TOTAL;0.351;;;;;
 2012;Annual;Alabama;AL;0.551;36;0.944;777;0.637;0.437
 2012;Annual;Arizona;AZ;0.214;9;0.889;2289;0.011;0.437
 2012;Annual;Arkansas;AR;0.281;37;0.973;2381;0.962;0.437
@@ -121,7 +121,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2012;Annual;Louisiana;LA;0.412;13;1;835;1;0.437
 2012;Annual;Maine;ME;0.399;101;0.941;81087;0.013;0.437
 2012;Annual;Maryland;MD;0.494;181;0.95;26722;0.07;0.437
-2012;Annual;Massachusetts;WO;0.344;151;0.973;24961;0.035;0.437
+2012;Annual;Massachusetts;MA;0.344;151;0.973;24961;0.035;0.437
 2012;Annual;Michigan;MI;0.415;205;0.966;39903;0.098;0.437
 2012;Annual;Minnesota;MN;0.575;74;0.838;72320;0.214;0.437
 2012;Annual;Mississippi;MS;0.602;26;0.808;156746;0.007;0.437
@@ -144,6 +144,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2012;Annual;South Dakota;SD;0.633;5;0.4;127801;0;0.437
 2012;Annual;Tennessee;TN;0.514;55;0.909;1357;0.566;0.437
 2012;Annual;Texas;TX;0.508;53;0.755;112502;0.006;0.437
+2012;;Total;TO;0.437;;;;;
 2012;Annual;Utah;UT;0.502;45;0.844;15720;0.03;0.437
 2012;Annual;Vermont;VT;0.299;39;0.897;4189;0.45;0.437
 2012;Annual;Virginia;VA;0.48;467;0.976;29167;0.185;0.437
@@ -151,7 +152,6 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2012;Annual;West Virginia;WV;0.558;60;0.933;2736;0.191;0.437
 2012;Annual;Wisconsin;WI;0.437;127;0.929;36124;0.136;0.437
 2012;Annual;Wyoming;WY;0.464;13;0.539;19318;0.007;0.437
-2012;;Total;TOTAL;0.437;;;;;
 2013;Annual;Alabama;AL;0.443;33;0.939;1083;0.386;0.404
 2013;Annual;Arizona;AZ;0.485;5;0.8;458;0.97;0.404
 2013;Annual;Arkansas;AR;0.294;56;0.929;10852;0.06;0.404
@@ -172,7 +172,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2013;Annual;Louisiana;LA;0.303;20;0.95;11549;0.292;0.404
 2013;Annual;Maine;ME;0.412;140;0.957;44447;0.023;0.404
 2013;Annual;Maryland;MD;0.438;148;0.919;23241;0.081;0.404
-2013;Annual;Massachusetts;DI;0.257;145;0.952;9387;0.181;0.404
+2013;Annual;Massachusetts;MA;0.257;145;0.952;9387;0.181;0.404
 2013;Annual;Michigan;MI;0.417;332;0.964;31420;0.126;0.404
 2013;Annual;Minnesota;MN;0.301;93;0.86;121915;0.018;0.404
 2013;Annual;Mississippi;MS;0.379;23;0.652;134891;0.002;0.404
@@ -195,6 +195,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2013;Annual;South Dakota;SD;0.304;14;0.5;95243;0;0.404
 2013;Annual;Tennessee;TN;0.414;91;0.945;1808;0.544;0.404
 2013;Annual;Texas;TX;0.357;78;0.756;187311;0.023;0.404
+2013;;Total;TO;0.404;;;;;
 2013;Annual;Utah;UT;0.286;51;0.823;9228;0.039;0.404
 2013;Annual;Vermont;VT;0.538;82;0.951;1996;0.982;0.404
 2013;Annual;Virginia;VA;0.424;637;0.981;27303;0.235;0.404
@@ -202,7 +203,6 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2013;Annual;West Virginia;WV;0.448;65;0.908;1178;0.634;0.404
 2013;Annual;Wisconsin;WI;0.339;136;0.86;58053;0.034;0.404
 2013;Annual;Wyoming;WY;0.201;10;0.4;22954;0.001;0.404
-2013;;Total;TOTAL;0.404;;;;;
 2014;Annual;Alabama;AL;0.48;28;0.964;504;0.985;0.45
 2014;Annual;Arizona;AZ;0.588;9;0.889;1156;0.623;0.45
 2014;Annual;Arkansas;AR;0.483;96;0.938;3428;0.759;0.45
@@ -223,7 +223,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2014;Annual;Louisiana;LA;0.443;18;0.833;4335;0.122;0.45
 2014;Annual;Maine;ME;0.605;103;0.961;46971;0.023;0.45
 2014;Annual;Maryland;MD;0.609;126;0.944;24579;0.048;0.45
-2014;Annual;Massachusetts;DO;0.461;150;0.98;1479;0.78;0.45
+2014;Annual;Massachusetts;MA;0.461;150;0.98;1479;0.78;0.45
 2014;Annual;Michigan;MI;0.318;210;0.981;11192;0.929;0.45
 2014;Annual;Minnesota;MN;0.506;77;0.805;137066;0.004;0.45
 2014;Annual;Mississippi;MS;0.387;11;0.818;20681;0.012;0.45
@@ -246,6 +246,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2014;Annual;South Dakota;SD;0.361;15;0.467;100410;0;0.45
 2014;Annual;Tennessee;TN;0.363;73;0.959;1691;0.741;0.45
 2014;Annual;Texas;TX;0.463;139;0.856;183028;0.032;0.45
+2014;;Total;TO;0.45;;;;;
 2014;Annual;Utah;UT;0.336;41;0.829;20822;0.011;0.45
 2014;Annual;Vermont;VT;0.341;50;0.92;731;0.722;0.45
 2014;Annual;Virginia;VA;0.461;590;0.985;4645;0.981;0.45
@@ -253,7 +254,6 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2014;Annual;West Virginia;WV;0.609;47;0.872;751;0.4;0.45
 2014;Annual;Wisconsin;WI;0.602;124;0.927;51505;0.079;0.45
 2014;Annual;Wyoming;WY;0.325;11;0.636;18200;0.002;0.45
-2014;;Total;TOTAL;0.45;;;;;
 2015;Annual;Alabama;AL;0.284;43;0.977;538;0.964;0.424
 2015;Annual;Arizona;AZ;0.405;6;1;37;1;0.424
 2015;Annual;Arkansas;AR;0.505;36;0.917;2020;0.204;0.424
@@ -274,7 +274,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2015;Annual;Louisiana;LA;0.147;21;1;695;1;0.424
 2015;Annual;Maine;ME;0.366;81;0.963;54707;0.013;0.424
 2015;Annual;Maryland;MD;0.561;128;0.93;30617;0.097;0.424
-2015;Annual;Massachusetts;ZA;0.558;113;0.956;1304;0.968;0.424
+2015;Annual;Massachusetts;MA;0.558;113;0.956;1304;0.968;0.424
 2015;Annual;Michigan;MI;0.46;195;0.985;6572;0.308;0.424
 2015;Annual;Minnesota;MN;0.493;109;0.89;53969;0.06;0.424
 2015;Annual;Mississippi;MS;0.713;12;0.667;22399;0.003;0.424
@@ -297,6 +297,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2015;Annual;South Dakota;SD;0.442;13;0.385;92609;0.001;0.424
 2015;Annual;Tennessee;TN;0.274;98;0.969;1247;0.92;0.424
 2015;Annual;Texas;TX;0.458;95;0.8;187895;0.013;0.424
+2015;;Total;TO;0.424;;;;;
 2015;Annual;Utah;UT;0.594;38;0.868;15873;0.028;0.424
 2015;Annual;Vermont;VT;0.155;48;0.875;2374;0.487;0.424
 2015;Annual;Virginia;VA;0.414;553;0.978;4163;0.872;0.424
@@ -304,7 +305,6 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2015;Annual;West Virginia;WV;0.498;55;0.909;1433;0.463;0.424
 2015;Annual;Wisconsin;WI;0.508;121;0.95;39422;0.192;0.424
 2015;Annual;Wyoming;WY;0.383;26;0.692;26403;0.019;0.424
-2015;;Total;TOTAL;0.424;;;;;
 2016;Annual;Alabama;AL;0.349;38;0.974;573;0.975;0.417
 2016;Annual;Arizona;AZ;0.65;10;0.8;528;0.244;0.417
 2016;Annual;Arkansas;AR;0.397;32;0.906;3183;0.153;0.417
@@ -348,6 +348,7 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2016;Annual;South Dakota;SD;0.322;12;0.5;29626;0.004;0.417
 2016;Annual;Tennessee;TN;0.49;57;1;1199;1;0.417
 2016;Annual;Texas;TX;0.349;136;0.927;60699;0.09;0.417
+2016;;Total;TO;0.417;;;;;
 2016;Annual;Utah;UT;0.532;167;0.97;3302;0.363;0.417
 2016;Annual;Vermont;VT;0.485;43;0.93;2050;0.834;0.417
 2016;Annual;Virginia;VA;0.441;371;0.97;3263;0.948;0.417
@@ -355,4 +356,3 @@ Year;Season;State;State ISO;Total Annual Loss;Beekeepers;Beekeepers Exclusive to
 2016;Annual;West Virginia;WV;0.266;52;0.942;993;0.798;0.417
 2016;Annual;Wisconsin;WI;0.294;99;0.939;15800;0.101;0.417
 2016;Annual;Wyoming;WY;0.234;18;0.778;6521;0.014;0.417
-2016;;Total;TOTAL;0.417;;;;;

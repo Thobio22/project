@@ -101,3 +101,33 @@
     * linechart maken + update
     * kleuren scaler voor datamap
     * update functie(?) die jaar en staat doorgeeft om de grafieken te updaten. klik aan figuur/slider roept update functie aan, die de andere figuren update met de meegegeven staat/jaar.
+
+
+# 15-06-2019
+* Aan data opschonen gezeten, niet veel verder gekomen. Niets gepushed.
+
+
+# 16-06-2019
+* Ziek, niet aan project gezeten
+
+
+# 17-06-2019
+* Ziek, kort naar de universiteit geweest. Aan data opschonen gezeten en verder schrijven linechart.
+
+
+# 18-06-2019
+* Er was geen standup.
+
+* Data moet per grafiek in een ander formaat. Begonnen aan aanpassen van opschonen en formatteren van data.
+
+
+# 19-06-2019
+* Er was geen Standup
+
+* Samen met Jasper eindelijk de data goed gekregen, heeft mij de hele dag gekost om alles goed te krijgen voor de grafieken. Kersen, blauwe bessen en aarbijen data wilt nog niet meewerken, maar met 3 crops is het beter dan niets. Data format map {jaar: {staat ISO: {data1: 1, data2: 2}, {etc}, {etc} }}. Data format linechart {staat ISO: [{jaar:1, kg: 2}]}. Data format piechart {jaar: {staat ISO: [staat naam: naam, percentages: %]}}.
+
+
+# 20-06-2019
+* Er was geen standup.
+
+* Eindelijk verder met map/line/pie. Nog steeds ideeen voor een 4e chart, maar ipv honing, wat niet echt een goed beeld kan tonen, misschien kosten van vervangen van bijen kolonies. 

@@ -32,8 +32,8 @@ Year;Period;State;State ISO;Varroa mites;Other pests and parasites;Diseases ;Pes
 2018;average;Georgia;GA;46.3;22.15;7.4;14.8;29.35;5.85
 2015;average;Hawaii;HI;52;53.28;0.55;0.1;2.57;0.1
 2016;average;Hawaii;HI;35.9;38.93;0.1;0.4;1.4;0.1
-2017;average;Hawaii;HI;37.53;19.05;0.2;#DIV/0!;0.65;0.1
-2018;average;Hawaii;HI;67.15;70.4;0.35;NaN;0.15;0.15
+2017;average;Hawaii;HI;37.53;19.05;0.2;null;0.65;0.1
+2018;average;Hawaii;HI;67.15;70.4;0.35;null;0.15;0.15
 2015;average;Idaho;ID;37.75;4.8;6.25;6.2;6.9;4.03
 2016;average;Idaho;ID;27.48;3.15;3.53;4.2;5.25;2.6
 2017;average;Idaho;ID;48.1;21.18;17.68;14.98;5.18;2.63
@@ -85,7 +85,7 @@ Year;Period;State;State ISO;Varroa mites;Other pests and parasites;Diseases ;Pes
 2015;average;Mississippi;MS;18.9;4.73;0.23;1.1;2;1.38
 2016;average;Mississippi;MS;18.88;3.35;0.97;2.57;2.15;5.53
 2017;average;Mississippi;MS;36.53;11.78;1.05;0.88;5.95;1.75
-2018;average;Mississippi;MS;25.7;14.45;NaN;0.4;3.75;18.25
+2018;average;Mississippi;MS;25.7;14.45;null;0.4;3.75;18.25
 2015;average;Missouri;MO;8.03;7.48;2.9;1.98;3.93;4.15
 2016;average;Missouri;MO;16.7;7.23;0.58;2.13;2.68;2.48
 2017;average;Missouri;MO;31.1;18.63;1.83;9.45;4.08;10.93
@@ -101,7 +101,7 @@ Year;Period;State;State ISO;Varroa mites;Other pests and parasites;Diseases ;Pes
 2015;average;New Jersey;NY;26.88;5;10.27;12.53;5.5;5.25
 2016;average;New Jersey;NY;17.18;5.1;0.5;3.67;1.65;5.3
 2017;average;New Jersey;NY;16.83;4;2.33;1.8;1.2;1.1
-2018;average;New Jersey;NY;15.7;2.6;NaN;0.25;3.6;0.45
+2018;average;New Jersey;NY;15.7;2.6;null;0.25;3.6;0.45
 2015;average;New Mexico;NM;37;18.47;23.57;18.13;14.45;1.38
 2016;average;New Mexico;NM;58.45;14.1;26.5;13.3;3.05;0.43
 2017;average;New Mexico;NM;85.68;1.4;59.37;11.95;12.68;0.63

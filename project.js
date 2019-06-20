@@ -12,29 +12,50 @@ window.onload = function() {
 
   var beeJson = "bee_colony_loss.json";
 
-  var beeLineJson = "bee_line_loss.json"
+  var beeLineJson = "bee_loss_line.json";
 
-  var appleJson = "apple_yield.json";
+  var cropJson = "combined_crop.json";
 
-  var requests = [d3v5.json(beeJson), d3v5.json(appleJson)]
+  var causeJson = "causation_data.json";
+
+  var requests = [d3v5.json(beeJson), d3v5.json(beeLineJson), d3v5.json(cropJson), d3v5.json(causeJson)]
+  //
 
   Promise.all(requests).then(function(response) {
 
+    // get data once everything is loaded in
     var data_bee = response[0];
+    //
+    var data_bee_line = response[1];
+    //
+    var data_crop = response[2];
+    //
+    var data_cause = response[3];
 
-    var data_apple = response[1];
+    // set default values for year and state. TO = total
+    var state = "TO";
 
-    // var data_cause = "NOG MAKEN"
+    // get slider year value
+    var slider = document.getElementById("year_slider");
+    var year = slider.value;
 
-    var year = 2010;
+    // update slider data on select
+    var slider_output = document.getElementById("slid_year");
+    slider_output.innerHTML = year;
 
-    var state = "AZ";
+    slider.oninput = function() {
+      console.log(this.value)
+      slider_output.innerHTML = this.value;
+      year = this.value;
+    };
+
+    // var year = getSliderYear();
 
     drawMap(data_bee, year);
 
-    drawLinechart(data_apple, state);
+    drawLinechart(data_crop, data_bee_line, state);
 
-    // drawPiechart(data_cause. year, state)
+    drawPiechart(data_cause, year, state)
 
   });
 
@@ -53,38 +74,22 @@ window.onload = function() {
 };
 
 
+function getSliderYear() {
+
+};
+
 // function getMapDataset(dataset) {
-//
-//   // // list of all ISO of the used countries
-//   // mapISO = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
-//   //           "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA",
-//   //           "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY",
-//   //           "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX",
-//   //           "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
-//
-//
-//   // create list with all relevant state data
-//   var stateData = {};
-//
-//   // mapISO.forEach(function(d, i) {
-//   //   console.log(d, i)
-//   //   stateData[d] = {
-//   //     ""
-//   //
-//   //
-//   //
-//   //
-//   //   }
-//   // });
-//
-//
-//   return stateData
 //
 // };
 
 
 function drawMap(dataset, year) {
-  console.log("START DRAW MAP")
+
+  // map does not have year 2017-2018, but pie chart does
+  if (year == 2017 || year == 2018) {
+    year = 2016;
+  };
+
 
   // draw map
   var linkedMap = new Datamap({
@@ -108,6 +113,13 @@ function drawMap(dataset, year) {
                 popupOnHover: true,
                 highlightOnHover: true,
                 borderColor: "black",
+                popupTemplate: function(geo, data) {
+                return ['<div class="hoverinfo"><strong>',
+                        'State: ' + data.State,
+                        '<br>Bee loss: ' + data.Total_Annual_Loss,
+                        '%</strong></div>'].join('');
+                }
+
               },
 
 
@@ -121,7 +133,7 @@ function drawMap(dataset, year) {
 };
 
 
-function drawLinechart(dataset, state) {
+function drawLinechart(data_crop, data_bee, state) {
   // this makes the multiple-linechart based on given dataset, year and state.
   var lineDim = {
                 top: 20,
@@ -142,9 +154,9 @@ function drawLinechart(dataset, state) {
   // var data = dataset[year][state]
 
   // create x, y scaling for placing data in svg pixels
-  var xScaleLoss = lineXscale(lineDim);
+  var xScaleBee = lineXscale(lineDim);
 
-  var yScaleLoss = lineYscale(lineDim);
+  var yScaleBee = lineYscale(lineDim);
 
   var xScaleCrop = cropXscale(lineDim);
 
@@ -180,7 +192,7 @@ function cropXscale(lineDim) {
 
 function cropYscale(lineDim) {
   var yScale = d3v5.scaleLinear()
-                   .domain([0, 10000000])
+                   .domain([0, 100000])
                    .range([lineDim.top, lineDim.height - lineDim.bottom])
 
 };
@@ -199,7 +211,7 @@ function drawPiechart(dataset, year, state) {
                  };
 
   // set radius of the piechart
-  var radius = Math.min(width, height) / 2 - margin
+  var radius = Math.min(pieDim.width, pieDim.height) / 2 - pieDim.margin;
 
   // create svg on pie_div
   var svg = d3v5.select("#pie_div")
@@ -207,7 +219,7 @@ function drawPiechart(dataset, year, state) {
                 .attr("width", pieDim.width)
                 .attr("height", pieDim.height)
               .append("g")
-                .attr("transform", "translate(" + pieDim.width / 2 + "," + pieDim.height)
+                .attr("transform", "translate(" + pieDim.width / 2 + "," + pieDim.height);
 
   // set data to needed part of dataset
   var data = dataset[year][state];
@@ -215,13 +227,13 @@ function drawPiechart(dataset, year, state) {
   // set color of the pie parts
   var color = d3v5.scaleOrdinal()
                   .domain(data)
-                  .range(d3.schemeSet2);
+                  .range("#3182bd", "31a354");
 
   // set position of each causastion group on pie
   var pie = d3v5.pie()
                 .value(function(d) {
-                  console.log(d.value)
-                  return d.value
+                  console.log(d.value);
+                  return d.value;
                 });
 
   var dataReady = pie(d3v5.entries(data));
@@ -229,15 +241,16 @@ function drawPiechart(dataset, year, state) {
 
   // shape helper to build arc on piechart group
   var arcBuilder = d3v5.arc()
-                         .innerRadius(0)
-                         .outerRadius(radius);
+                       .innerRadius(0)
+                       .outerRadius(radius);
 
   // build d3v5.tooltip
   var causeTip = d3v5.tip()
                      .attr('class', 'd3-tip')
                      .offset([-10, 0])
                      .html(function(d) {
-                       return "wat wil je in tip hebben"
+                       return "Percentage loss" + ": " + "<span style='color:red'>"
+                              + d + "%</span>"
                      })
                      .attr("stroke", "black");
 
@@ -265,7 +278,7 @@ function drawPiechart(dataset, year, state) {
                     .append("text")
                       .attr("class", "pieAnno")
                       .text(function(d) {
-                        return "Cause: " + d.data.key
+                        return "Cause: " + d.data.key;
                       })
                       .attr("transform", function(d) {
                         return "translate(" + arcBuilder.centroid(d) + ")"

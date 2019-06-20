@@ -34,7 +34,7 @@
     <script src="d3-tip.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
-    <title>Bee loss</title>
+    <title>Bee loss in America</title>
   </head>
   <body>
     <h1>The decline of the Honey bee in the United States</h1>
@@ -43,7 +43,8 @@
     <p>These plots are made with d3 (v3 and v5) and datamaps.</p>
     <div id="map_div" style="position: relative; width: 600px; height: 360px;"></div>
     <div class="slidecontainer">
-      <input type="range" min="2010" max="2016" value="2010" class="slider" id="year_slider">
+      <input type="range" min="2010" max="2018" value="2010" class="slider" id="year_slider">
+      <h3>Year: <span id="slid_year"></span></h3>
     </div>
 
 
@@ -51,6 +52,6 @@
       <div id="line_div"></div>
       <div id="pie_div"></div>
     </div>
-    <button class="reset_button">Whole USA</button>
+    <button class="reset_button">Default: Whole USA</button>
   </body>
 </html>
