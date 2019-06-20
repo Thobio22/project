@@ -44,13 +44,13 @@ window.onload = function() {
     slider_output.innerHTML = year;
 
     slider.oninput = function() {
-      console.log(this.value)
       slider_output.innerHTML = this.value;
       year = this.value;
+      // updateFigures(year, state);
+
     };
 
     // var year = getSliderYear();
-
     drawMap(data_bee, year);
 
     drawLinechart(data_crop, data_bee_line, state);
@@ -78,9 +78,10 @@ function getSliderYear() {
 
 };
 
-// function getMapDataset(dataset) {
-//
-// };
+
+function updateFigures(year, state) {
+
+};
 
 
 function drawMap(dataset, year) {
@@ -89,7 +90,6 @@ function drawMap(dataset, year) {
   if (year == 2017 || year == 2018) {
     year = 2016;
   };
-
 
   // draw map
   var linkedMap = new Datamap({
@@ -135,6 +135,8 @@ function drawMap(dataset, year) {
 
 function drawLinechart(data_crop, data_bee, state) {
   // this makes the multiple-linechart based on given dataset, year and state.
+
+
   var lineDim = {
                 top: 20,
                 right: 60,
@@ -203,6 +205,10 @@ function cropYscale(lineDim) {
 
 function drawPiechart(dataset, year, state) {
   // This draws the pie-chart of bee loss causation in the pie_div
+  // pie chart only has years 2015 - 2018
+  if (year < 2015) {
+    year = 2015;
+  };
 
   // set dimension + margins of graph
   var pieDim = {width: 450,
@@ -219,15 +225,16 @@ function drawPiechart(dataset, year, state) {
                 .attr("width", pieDim.width)
                 .attr("height", pieDim.height)
               .append("g")
-                .attr("transform", "translate(" + pieDim.width / 2 + "," + pieDim.height);
+                .attr("transform", "translate(" + pieDim.width / 2 + "," + pieDim.height + ")");
 
   // set data to needed part of dataset
-  var data = dataset[year][state];
+
+  var data = dataset[2015][state];
 
   // set color of the pie parts
   var color = d3v5.scaleOrdinal()
                   .domain(data)
-                  .range("#3182bd", "31a354");
+                  .range(["#3182bd", "31a354"]);
 
   // set position of each causastion group on pie
   var pie = d3v5.pie()

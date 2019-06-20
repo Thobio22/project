@@ -130,4 +130,6 @@
 # 20-06-2019
 * Er was geen standup.
 
-* Eindelijk verder met map/line/pie. Nog steeds ideeen voor een 4e chart, maar ipv honing, wat niet echt een goed beeld kan tonen, misschien kosten van vervangen van bijen kolonies. 
+* Eindelijk verder met map/line/pie. Nog steeds ideeen voor een 4e chart, maar ipv honing, wat niet echt een goed beeld kan tonen, misschien kosten van vervangen van bijen kolonies.
+
+* NOTITIE VOOR ZELF: bij causatie moet je de vorige data nog terughalen, zodat je alle data per periode hebt, want de huidige percentages vormen geen 100%
