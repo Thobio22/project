@@ -41,6 +41,7 @@
       overflow:hidden; /* this is so it can be placed right of line_div */
     }
 
+
     /* width of container where year slider is in */
     .slidecontainer {
       width: 600px; /* same size as map_div */
