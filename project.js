@@ -295,7 +295,7 @@ function drawLinechart(data_crop, data_bee_line, state) {
                 .attr("transform", "translate(" + lineDim.left + "," + lineDim.top + ")");
 
   // create x, y scaling for placing data in svg pixels
-  var xScaleBee = lineXscale(lineDim);
+  var xScale = lineXscale(lineDim);
 
   var yScaleBee = lineYscale(lineDim);
 
@@ -304,61 +304,83 @@ function drawLinechart(data_crop, data_bee_line, state) {
 
 
   // define x and y axis
-  var xAxis = d3v5.axisBottom(xScaleBee);
+  var xAxis = d3v5.axisBottom(xScale);
 
   var yAxisBee = d3v5.axisLeft(yScaleBee);
 
-  var yAxisCrop = d3v5.axisRight(yScaleCrop)
+  var yAxisCrop = d3v5.axisRight(yScaleCrop);
 
 
-  // // Add the bee loss line
-  // var lineBee = svg.append("path")
-  //       .data(data_bee_line)
-  //       .attr("class", "bee_line")
-  //       .attr("stroke", "red")
-  //       .attr("stroke-width", 1.5)
-  //       .attr("x", (function(d) {
-  //           return xScaleBee(d["Year"])
-  //       }))
-  //       .attr("y", (function(d) {
-  //           return yScaleBee(d["Total_Annual_Loss"])
-  //       }));
-  //
-  //   svg.append("path")
+  // Add the bee loss line
+  var lineBee = d3v5.line()
+            .x(function(d) {
+              console.log(d)
+              return xScale(d["Year"])
+            })
+            .y(function(d) {
+              console.log(d)
+              return yScaleBee(d["Total_Annual_Loss"])
+            });
 
-  // Add the line for bee loss
+  var lineCrop = d3v5.line()
+            .x(function(d) {
+              return xScale(d["Year"])
+            })
+            .y(function(d) {
+              console.log(d)
+              return yScaleCrop(d["Kg_per_Acre"])
+            });
+
+  // Add bee loss line
   svg.append("path")
-      .data(data_bee_line)
-      .attr("fill", "none")
-      .attr("stroke", "red")
-      .attr("stroke-width", 1.5)
-      .attr("d", d3v5.line()
-        .x(function(d) {
-          console.log(d["Year"])
-          return xScaleBee(d["Year"])
-        })
-        .y(function(d) { return yScaleBee(d["Total_Annual_Loss"]) })
-        )
+       .data(data_bee_line[state])
+       .attr("class", "beeLine")
+       .attr("stroke", "red")
+       .attr("d", lineBee);
 
 
-    // add the line for crop yield per acre
-    svg.append("path")
-        .data(data_crop)
-        .attr("fill", "none")
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 1.5)
-        .attr("d", d3v5.line()
-          .x(function(d) { return xScaleBee(d["Year"]) })
-          .y(function(d) { return yScaleCrop(d["Kg_per_Acre"]) })
-          )
+  svg.append("path")
+       .data(data_bee_line[state])
+       .attr("class", "beeLine")
+       .attr("stroke", "blue")
+       .attr("d", lineCrop);
 
 
-
-
-
-
-
-
+  // //   svg.append("path")
+  //
+  // // Add the line for bee loss
+  // svg.append("path")
+  //     .data(data_bee_line[state])
+  //     .attr("fill", "none")
+  //     .attr("stroke", "red")
+  //     .attr("stroke-width", 1.5)
+  //     .attr("d", d3v5.line()
+  //       .x(function(d) {
+  //         console.log(d["Year"])
+  //         return xScaleBee(d["Year"])
+  //       })
+  //       .y(function(d) { return yScaleBee(d["Total_Annual_Loss"]) })
+  //       )
+  //
+  //
+  //   // add the line for crop yield per acre
+  //   svg.append("path")
+  //       .data(data_crop[state])
+  //       .attr("fill", "none")
+  //       .attr("stroke", "steelblue")
+  //       .attr("stroke-width", 1.5)
+  //       .attr("d", d3v5.line()
+  //         .x(function(d) { return xScaleBee(d["Year"]) })
+  //         .y(function(d) { return yScaleCrop(d["Kg_per_Acre"]) })
+  //         )
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
     // create x axis by calling on xAxis
     svg.append("g")
        .attr("class", "axis")
