@@ -19,17 +19,17 @@ window.onload = function() {
   var causeJson = "causation_data.json";
 
   var requests = [d3v5.json(beeJson), d3v5.json(beeLineJson), d3v5.json(cropJson), d3v5.json(causeJson)]
-  //
+
 
   Promise.all(requests).then(function(response) {
 
     // get data once everything is loaded in
     var data_bee = response[0];
-    //
+
     var data_bee_line = response[1];
-    //
+
     var data_crop = response[2];
-    //
+
     var data_cause = response[3];
 
     // set default values for year and state. TO = total
@@ -50,7 +50,6 @@ window.onload = function() {
 
     };
 
-    // var year = getSliderYear();
     drawMap(data_bee, year);
 
     drawLinechart(data_crop, data_bee_line, state);
@@ -59,17 +58,6 @@ window.onload = function() {
 
   });
 
-  //
-  // d3v5.json("bee_colony_loss.json").then(function(data_bee) {
-  //   console.log("DATA LOADED");
-  //
-  //   // var mapDataset = getMapDataset(data_bee);
-  //   console.log(data_bee[2010])
-  // });
-  //
-  // d3v5.json("apple_yield.json").then(function(data_apple) {
-  //   console.log("APPLEDATA LOADED")
-  // })
 
 };
 
@@ -84,6 +72,40 @@ function updateFigures(year, state) {
 };
 
 
+// function colorMap(dataset) {
+//
+//   // create fillcolor for map based on loss
+//   var colorScale = function(loss) {
+//      if (0 < loss && loss < 1) {
+//        return "#ffffcc";
+//      }
+//      else if (1 < loss && loss < 3) {
+//        return "#ffeda0"
+//      }
+//      else if (3 < loss && loss < 5) {
+//        return "#feb24c"
+//      }
+//      else if (5 < loss && loss < 7) {
+//        return "#fd8d3c"
+//      }
+//      else if (7 < loss && loss < 9) {
+//        return "#fc4e2a"
+//      }
+//      else if (9 < loss && loss < 11) {
+//        return "#e31a1c"
+//      }
+//      else {
+//        return "#800026"
+//      }
+//   };
+//
+//   // add relevant fillcolor to countryData based on present loss
+//   Object.keys(dataset).forEach(function (d) {
+//         countryData[d]["fillcolor"] = colorScale(countryData[d].loss)
+//   });
+// };
+
+
 function drawMap(dataset, year) {
 
   // map does not have year 2017-2018, but pie chart does
@@ -95,16 +117,16 @@ function drawMap(dataset, year) {
   var linkedMap = new Datamap({
               element: document.getElementById('map_div'),
               fills: {
-                "90": "#7f0000",
-                "80": "#b2182b",
-                "70": "#d6604d",
-                "60": "#f4a582",
-                "50": "#fddbc7",
-                "40": "#d1e5f0",
-                "30": "#92c5de",
-                "20": "#4393c3",
-                "10": "#2166ac",
-                "0": "#023858",
+                90: "#7a0000",
+                80: "#800026",
+                70: "#b2182b",
+                60: "#bd0026",
+                50: "#e31a1c",
+                40: "#fc4e2a",
+                30: "#fd8d3c",
+                20: "#feb24c",
+                10: "#fed976",
+                0: "#ffeda0",
                 defaultFill: "grey"
               },
               scope: "usa",
@@ -112,12 +134,12 @@ function drawMap(dataset, year) {
               geographyConfig: {
                 popupOnHover: true,
                 highlightOnHover: true,
+                highlightFillColor: 'black',
                 borderColor: "black",
                 popupTemplate: function(geo, data) {
-                return ['<div class="hoverinfo"><strong>',
-                        'State: ' + data.State,
-                        '<br>Bee loss: ' + data.Total_Annual_Loss,
-                        '%</strong></div>'].join('');
+                  return ['<div class="hoverinfo"><strong>',
+                          data.State,'<br>Bee loss: ' + data.Total_Annual_Loss,
+                          '%</strong></div>'].join('');
                 }
 
               },
@@ -133,9 +155,127 @@ function drawMap(dataset, year) {
 };
 
 
-function drawLinechart(data_crop, data_bee, state) {
-  // this makes the multiple-linechart based on given dataset, year and state.
+function drawPiechart(dataset, year, state) {
+  // This draws the pie-chart of bee loss causation in the pie_div
+  // pie chart only has years 2015 - 2018
+  if (year < 2015) {
+    year = 2015;
+  };
 
+  // set dimension + margins of graph
+  var pieDim = { width: 450,
+                 height: 450,
+                 margin: 40
+               };
+
+  // set radius of the piechart
+  var radius = pieDim.width / 2 - pieDim.margin;
+
+  // create svg on pie_div
+  var svg = d3v5.select("#pie_div")
+              .append("svg")
+                .attr("width", pieDim.width)
+                .attr("height", pieDim.height)
+              .append("g")
+                .attr("transform", "translate(" + pieDim.width / 2 + "," + pieDim.height / 2 + ")");
+
+  // set data to needed part of dataset
+
+  var data = dataset[year][state];
+
+  // set color of the pie parts
+  var color = d3v5.scaleOrdinal()
+                  .domain(["a", "b", "c", "d", "e", "f"])
+                  .range(d3v5.schemeDark2);
+
+  // set position of each causastion group on pie
+  var pie = d3v5.pie()
+                .value(function(d) {
+                  return d.value;
+                });
+
+  var dataReady = pie(d3v5.entries(data));
+
+
+  // shape helper to build arc on piechart group
+  var arcBuilder = d3v5.arc()
+                       .innerRadius(0)
+                       .outerRadius(radius);
+
+  // build d3v5.tooltip
+  var causeTip = d3v5.tip()
+                     .attr('class', 'd3-tip')
+                     .offset([-10, 0])
+                     .html(function(d) {
+                       if (d.data.key == "Varroa_mites") {
+                         return "Loss by Varroa mites: <span style='color:red'>"
+                                + d.data.value + "%</span>"
+                       }
+                       else if (d.data.key == "Other_pests_and_parasites") {
+                         return "Loss by Other pests and parasites: <span style='color:red'>"
+                                + d.data.value + "%</span>"
+                       }
+                       else if (d.data.key == "Other*") {
+                         return "Loss by weather, starvation, queen failure <br>" +
+                                "or hive destruction: <span style='color:red'>"
+                                + d.data.value + "%</span>"
+                       }
+                       else {
+                         return "Loss by " + d.data.key + ":  <span style='color:red'>"
+                              + d.data.value + "%</span>"
+                       }
+                     })
+                     .attr("stroke", "black");
+
+  // make interactive animation work
+  svg.call(causeTip);
+
+
+  // build the piechart
+  var pie = svg.selectAll("slices")
+               .data(dataReady)
+               .enter()
+             .append("path")
+               .attr("class", "pieGroup")
+               .attr("d", arcBuilder)
+               .attr("fill", function(d) {
+                 return (color(d.data.key))
+               })
+               .attr("stroke", "black")
+               .on('mouseover', causeTip.show)
+               .on('mouseout', causeTip.hide);
+
+
+  // add annotation in the center of the group
+  // var annotation = svg.selectAll("slices")
+  //                     .data(dataReady)
+  //                     .enter()
+  //                   .append("text")
+  //                     .attr("class", "pieAnno")
+  //                     .text(function(d) {
+  //                       return d.data.key;
+  //                     })
+  //                     .attr("transform", function(d) {
+  //                       return "translate(" + arcBuilder.centroid(d) + ")"
+  //                     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+};
+
+
+function drawLinechart(data_crop, data_bee_line, state) {
+  // this makes the multiple-linechart based on given dataset, year and state.
 
   var lineDim = {
                 top: 20,
@@ -153,7 +293,6 @@ function drawLinechart(data_crop, data_bee, state) {
               .append("g")
                 .attr("transform", "translate(" + lineDim.left + "," + lineDim.top + ")");
 
-  // var data = dataset[year][state]
 
   // create x, y scaling for placing data in svg pixels
   var xScaleBee = lineXscale(lineDim);
@@ -162,9 +301,61 @@ function drawLinechart(data_crop, data_bee, state) {
 
   var xScaleCrop = cropXscale(lineDim);
 
-  var yScaleCrop = cropYscale(lineDim);
+  var yScaleCrop = cropYscale(lineDim, data_crop[state]);
 
 
+  // define x and y axis
+  var xAxis = d3v5.axisBottom(xScaleBee);
+
+  var yAxisBee = d3v5.axisLeft(yScaleBee);
+
+  var yAxisCrop = d3v5.axisRight(yScaleCrop)
+
+
+  // Add the bee loss line
+  var lineBee = svg.append("path")
+        .data(data_bee_line)
+        .attr("class", "bee_line")
+        .attr("stroke", "red")
+        .attr("stroke-width", 1.5)
+        .attr("x", (function(d) {
+            return xScaleBee(d["Year"])
+        }))
+        .attr("y", (function(d) {
+            return yScaleBee(d["Total_Annual_Loss"])
+        }));
+
+    svg.append("path")
+
+
+
+
+
+
+
+
+  // create x axis by calling on xAxis
+  svg.append("g")
+     .attr("class", "axis")
+     .attr("transform", "translate(0," + (lineDim.height - lineDim.top) + ")")
+     .call(xAxis);
+
+
+  // create yAxis percentage loss by calling on yAxisBee
+  svg.append("g")
+     .attr("class", "axis")
+     .attr("transform", "translate(" + lineDim.top + ",0)")
+     .call(yAxisBee);
+
+
+  // create yAxis yield by calling on yAxisCrop
+  svg.append("g")
+     .attr("class", "axis")
+     .attr("transform", "translate(" + lineDim.top + ",0)")
+     .call(yAxisCrop)
+
+
+};
 
 
 function lineXscale(lineDim) {
@@ -179,7 +370,7 @@ function lineXscale(lineDim) {
 function lineYscale(lineDim) {
   var yScale = d3v5.scaleLinear()
                    .domain([0, 100])
-                   .range([lineDim.top, lineDim.height - lineDim.bottom]);
+                   .range([lineDim.height - lineDim.bottom, lineDim.top]);
 
   return yScale;
 };
@@ -188,119 +379,18 @@ function lineYscale(lineDim) {
 function cropXscale(lineDim) {
   var xScale = d3v5.scaleLinear()
                    .domain([2010, 2016])
-                   .range([lineDim.left, lineDim.width - lineDim.right])
+                   .range([lineDim.left, lineDim.width - lineDim.right]);
+
+  return xScale
 };
 
 
-function cropYscale(lineDim) {
+function cropYscale(lineDim, data) {
   var yScale = d3v5.scaleLinear()
-                   .domain([0, 100000])
-                   .range([lineDim.top, lineDim.height - lineDim.bottom])
+                   .domain(d3v5.max([0, d3v5.max(data, function (d) {
+                     return d["Kg_per_Acre"]
+                   } ) ]) )
+                   .range([lineDim.height - lineDim.bottom, lineDim.top]);
 
-};
-
-
-};
-
-
-function drawPiechart(dataset, year, state) {
-  // This draws the pie-chart of bee loss causation in the pie_div
-  // pie chart only has years 2015 - 2018
-  if (year < 2015) {
-    year = 2015;
-  };
-
-  // set dimension + margins of graph
-  var pieDim = {width: 450,
-                   height: 450,
-                   margin: 40
-                 };
-
-  // set radius of the piechart
-  var radius = Math.min(pieDim.width, pieDim.height) / 2 - pieDim.margin;
-
-  // create svg on pie_div
-  var svg = d3v5.select("#pie_div")
-              .append("svg")
-                .attr("width", pieDim.width)
-                .attr("height", pieDim.height)
-              .append("g")
-                .attr("transform", "translate(" + pieDim.width / 2 + "," + pieDim.height + ")");
-
-  // set data to needed part of dataset
-
-  var data = dataset[2015][state];
-
-  // set color of the pie parts
-  var color = d3v5.scaleOrdinal()
-                  .domain(data)
-                  .range(["#3182bd", "31a354"]);
-
-  // set position of each causastion group on pie
-  var pie = d3v5.pie()
-                .value(function(d) {
-                  console.log(d.value);
-                  return d.value;
-                });
-
-  var dataReady = pie(d3v5.entries(data));
-
-
-  // shape helper to build arc on piechart group
-  var arcBuilder = d3v5.arc()
-                       .innerRadius(0)
-                       .outerRadius(radius);
-
-  // build d3v5.tooltip
-  var causeTip = d3v5.tip()
-                     .attr('class', 'd3-tip')
-                     .offset([-10, 0])
-                     .html(function(d) {
-                       return "Percentage loss" + ": " + "<span style='color:red'>"
-                              + d + "%</span>"
-                     })
-                     .attr("stroke", "black");
-
-  // make interactive animation work
-  svg.call(tip);
-
-
-  // build the piechart
-  var pie = svg.selectAll("slices")
-               .data(dataReady)
-               .enter()
-             .append("path")
-               .attr("class", "pieGroup")
-               .attr("d", arcBuild)
-               .attr("fill", function(d) {
-                 return (color(d.data.key))
-               })
-               .attr("stroke", "black");
-
-
-  // add annotation in the center of the group
-  var annotation = svg.selectAll("slices")
-                      .data(dataReady)
-                      .enter()
-                    .append("text")
-                      .attr("class", "pieAnno")
-                      .text(function(d) {
-                        return "Cause: " + d.data.key;
-                      })
-                      .attr("transform", function(d) {
-                        return "translate(" + arcBuilder.centroid(d) + ")"
-                      });
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return yScale
 };

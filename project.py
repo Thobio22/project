@@ -23,7 +23,7 @@ def clean_bee(dataframe):
 
 
     # drop unneeded columns
-    dataframe = dataframe[["State", loss]]
+    dataframe = dataframe[["State", loss, "fillKey"]]
 
 
     # remove the states without any data (Alaska & Puerto Rico)
@@ -106,16 +106,15 @@ def clean_cause(dataframe):
 
     dataframe.columns = dataframe.columns.str.replace(" ", "_")
 
+    # drop unneaded column
+    dataframe = dataframe.drop("State", axis=1)
 
     # set all percentages to numeric, coerce errors (NaN) to be actual NaN values
-    dataframe["Varroa_mites"] = pd.to_numeric(dataframe["Varroa_mites"], errors="coerce")
-    dataframe["Other_pests_and_parasites"] = pd.to_numeric(dataframe["Other_pests_and_parasites"], errors="coerce")
-    dataframe["Diseases"] = pd.to_numeric(dataframe["Diseases"], errors="coerce")
-    dataframe["Pesticides"] = pd.to_numeric(dataframe["Pesticides"], errors="coerce")
-    dataframe["Other"] = pd.to_numeric(dataframe["Other"], errors="coerce")
-    dataframe["Unknown"] = pd.to_numeric(dataframe["Unknown"], errors="coerce")
+    columnList = ["Varroa_mites", "Other_pests_and_parasites", "Diseases", "Pesticides", "Other*", "Unknown"]
 
-    dataframe = dataframe.drop("State", axis=1)
+    for i in columnList:
+        dataframe[i] = round(pd.to_numeric(dataframe[i], errors="ignore"), 1)
+
 
     return dataframe
 

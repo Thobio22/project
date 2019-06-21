@@ -12,8 +12,8 @@
 
     body {
       font: 10px sans-serif;
-      background-color: #fcfc83;
-      /* #dee2e8 */
+      background-color: white;
+      /* #fcfc83 */
     }
 
     /* wrapper div for placing 2 divs next to eachother */
@@ -124,9 +124,12 @@
 
     /* creates a black box for tooltip */
     .d3-tip {
+      box-sizing: border-box;
       line-height: 1;
       font-weight: bold;
+      font-size: 12px;
       padding: 12px;
+      width: 185px;
       background: rgba(0, 0, 0, 0.8);
       color: #fff;
       border-radius: 2px;
