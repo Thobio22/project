@@ -25,15 +25,15 @@ window.onload = function() {
 
     // get data once everything is loaded in
     var data_bee = response[0];
-
     var data_bee_line = response[1];
-
     var data_crop = response[2];
-
     var data_cause = response[3];
 
-    // set default values for year and state. TO = total
+    // set default variables for updating figures
     var state = "TO";
+    var radius = "emtpyvariable"
+    var svgPie = "emptyvariable"
+    var defaultButton = "TO"
 
     // get slider year value
     var slider = document.getElementById("year_slider");
@@ -43,18 +43,22 @@ window.onload = function() {
     var slider_output = document.getElementById("slid_year");
     slider_output.innerHTML = year;
 
-    slider.oninput = function() {
-      slider_output.innerHTML = this.value;
-      year = this.value;
-      // updateFigures(year, state);
-
-    };
-
     drawMap(data_bee, year);
 
     drawLinechart(data_crop, data_bee_line, state);
 
     drawPiechart(data_cause, year, state)
+
+    function variableCheck() {
+      
+    }
+
+    slider.oninput = function() {
+      slider_output.innerHTML = this.value;
+      year = this.value;
+      updateFigures(year, state);
+
+    };
 
   });
 
@@ -62,48 +66,11 @@ window.onload = function() {
 };
 
 
-function getSliderYear() {
-
+function updateFigures(dataPie, year, state, radius, svgPie) {
+    updatePie(dataPie, year, state, radius, svgPie);
+    updateLine(state);
 };
 
-
-function updateFigures(year, state) {
-
-};
-
-
-// function colorMap(dataset) {
-//
-//   // create fillcolor for map based on loss
-//   var colorScale = function(loss) {
-//      if (0 < loss && loss < 1) {
-//        return "#ffffcc";
-//      }
-//      else if (1 < loss && loss < 3) {
-//        return "#ffeda0"
-//      }
-//      else if (3 < loss && loss < 5) {
-//        return "#feb24c"
-//      }
-//      else if (5 < loss && loss < 7) {
-//        return "#fd8d3c"
-//      }
-//      else if (7 < loss && loss < 9) {
-//        return "#fc4e2a"
-//      }
-//      else if (9 < loss && loss < 11) {
-//        return "#e31a1c"
-//      }
-//      else {
-//        return "#800026"
-//      }
-//   };
-//
-//   // add relevant fillcolor to countryData based on present loss
-//   Object.keys(dataset).forEach(function (d) {
-//         countryData[d]["fillcolor"] = colorScale(countryData[d].loss)
-//   });
-// };
 
 
 function drawMap(dataset, year) {
@@ -143,24 +110,23 @@ function drawMap(dataset, year) {
                 }
 
               },
-
-
-
-
-
-
+              done: function(linkedMap) {
+                // on click: update figures
+                linkedMap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
+                  // removes all lines in linechart
+                  d3v5.selectAll("#path").remove();
+                  updateFigures(year, geography.id);
+                });
+              };
   });
 
 
 };
 
 
+
 function drawPiechart(dataset, year, state) {
   // This draws the pie-chart of bee loss causation in the pie_div
-  // pie chart only has years 2015 - 2018
-  if (year < 2015) {
-    year = 2015;
-  };
 
   // set dimension + margins of graph
   var pieDim = { width: 450,
@@ -169,24 +135,36 @@ function drawPiechart(dataset, year, state) {
                };
 
   // set radius of the piechart
-  var radius = pieDim.width / 2 - pieDim.margin;
+  radius = pieDim.width / 2 - pieDim.margin;
 
   // create svg on pie_div
-  var svg = d3v5.select("#pie_div")
-              .append("svg")
-                .attr("width", pieDim.width)
-                .attr("height", pieDim.height)
-              .append("g")
-                .attr("transform", "translate(" + pieDim.width / 2 + "," + pieDim.height / 2 + ")");
-
-  // set data to needed part of dataset
-
-  var data = dataset[year][state];
+  svgPie = d3v5.select("#pie_div")
+          .append("svg")
+            .attr("width", pieDim.width)
+            .attr("height", pieDim.height)
+          .append("g")
+            .attr("transform", "translate(" + pieDim.width / 2 + "," + pieDim.height / 2 + ")");
 
   // set color of the pie parts
   var color = d3v5.scaleOrdinal()
                   .domain(["a", "b", "c", "d", "e", "f"])
                   .range(d3v5.schemeDark2);
+
+  updatePie(dataset, year, state, radius, svgPie);
+
+};
+
+
+function updatePie(dataset, year, state, radius, svgPie) {
+// updates the pie chart when called on
+
+  // pie chart only has years 2015 - 2018
+  if (year < 2015) {
+    year = 2015;
+  };
+
+  // set data to needed part of dataset
+  var data = dataset[year][state];
 
   // set position of each causastion group on pie
   var pie = d3v5.pie()
@@ -227,49 +205,33 @@ function drawPiechart(dataset, year, state) {
                      })
                      .attr("stroke", "black");
 
-  // make interactive animation work
-  svg.call(causeTip);
 
+  // make interactive animation work
+  svgPie.call(causeTip);
 
   // build the piechart
-  var pie = svg.selectAll("slices")
+  var upPie = svgPie.selectAll("slices")
                .data(dataReady)
-               .enter()
-             .append("path")
-               .attr("class", "pieGroup")
-               .attr("d", arcBuilder)
-               .attr("fill", function(d) {
-                 return (color(d.data.key))
-               })
-               .attr("stroke", "black")
-               .on('mouseover', causeTip.show)
-               .on('mouseout', causeTip.hide);
 
 
-  // add annotation in the center of the group
-  // var annotation = svg.selectAll("slices")
-  //                     .data(dataReady)
-  //                     .enter()
-  //                   .append("text")
-  //                     .attr("class", "pieAnno")
-  //                     .text(function(d) {
-  //                       return d.data.key;
-  //                     })
-  //                     .attr("transform", function(d) {
-  //                       return "translate(" + arcBuilder.centroid(d) + ")"
-  //                     });
+  upPie
+     .enter()
+   .append("path")
+     .attr("class", "pieGroup")
+     .merge(pie)
+     .transition()
+     .duration(1000)
+     .attr("d", arcBuilder)
+     .attr("fill", function(d) {
+       return (color(d.data.key))
+     })
+     .attr("stroke", "black")
+     .on('mouseover', causeTip.show)
+     .on('mouseout', causeTip.hide);
 
-
-
-
-
-
-
-
-
-
-
-
+  upPie
+    .exit()
+    .remove()
 
 };
 
@@ -431,4 +393,11 @@ function cropYscale(lineDim, data) {
                    .range([lineDim.height - lineDim.top, lineDim.top]);
 
   return yScale
+};
+
+
+function getButton() {
+  var state = "TO";
+
+
 };
