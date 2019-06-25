@@ -49,17 +49,36 @@
     <h3>StudentID: 10779272</h3>
     <p>These plots are made with d3 (v3 and v5) and datamaps.</p>
     <div id="map_div" style="position: relative; width: 600px; height: 360px;"></div>
+    <h2> </h2>
+    <h1> </h1>
+    <h3> </h3>
     <div class="slidecontainer">
       <input type="range" min="2010" max="2018" value="2010" class="slider" id="year_slider">
-      <h3>Year: <span id="slid_year"></span></h3>
     </div>
+    <h3>Year: <span id="slid_year"></span></h3>
+    <input type="hidden" id="yearvar" name="selected_year" value="2010">
+    <input type="hidden" id="statevar" name="selected_state" value="AZ">
+    <input type="hidden" id="periodvar" name="selected_period" value="year">
+
 
 
     <div id="container">
       <div id="line_div"></div>
-      <div id="pie_div"></div>
-    </div>
-    <button class="reset_button" id="defaultButton" onclick="getButton()">Default data: Whole USA</button>
+      <div id="pie_div">
+        <div class='dropdown'>
+      		<div class='title pointerCursor'>Select an option <i class="fa fa-angle-right"></i></div>
+
+      		<div class='menu pointerCursor hide'>
+      			<div class="option" id="year" value="year">year</div>
+      			<div class="option" id="jan-march" value="jan-march">jan-march</div>
+      			<div class="option" id="april-june" value="april-june">april-june</div>
+      			<div class="option" id="july-sep" value="july-sep">july-sept</div>
+            <div class="option" id="oct-dec" value="oct-dec">oct-dec</div>
+      		</div>
+
+      	</div>
+      </div>
+    <button class="reset_button" id="defaultButton">Default data: Whole USA</button>
 
     <!-- Load in all necessary bootstrap links -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -103,33 +103,50 @@
     * update functie(?) die jaar en staat doorgeeft om de grafieken te updaten. klik aan figuur/slider roept update functie aan, die de andere figuren update met de meegegeven staat/jaar.
 
 
-# 15-06-2019
+## 15-06-2019
 * Aan data opschonen gezeten, niet veel verder gekomen. Niets gepushed.
 
 
-# 16-06-2019
+## 16-06-2019
 * Ziek, niet aan project gezeten
 
 
-# 17-06-2019
+## 17-06-2019
 * Ziek, kort naar de universiteit geweest. Aan data opschonen gezeten en verder schrijven linechart.
 
 
-# 18-06-2019
+## 18-06-2019
 * Er was geen standup.
 
 * Data moet per grafiek in een ander formaat. Begonnen aan aanpassen van opschonen en formatteren van data.
 
 
-# 19-06-2019
+## 19-06-2019
 * Er was geen Standup
 
 * Samen met Jasper eindelijk de data goed gekregen, heeft mij de hele dag gekost om alles goed te krijgen voor de grafieken. Kersen, blauwe bessen en aarbijen data wilt nog niet meewerken, maar met 3 crops is het beter dan niets. Data format map {jaar: {staat ISO: {data1: 1, data2: 2}, {etc}, {etc} }}. Data format linechart {staat ISO: [{jaar:1, kg: 2}]}. Data format piechart {jaar: {staat ISO: [staat naam: naam, percentages: %]}}.
 
 
-# 20-06-2019
+## 20-06-2019
 * Er was geen standup.
 
 * Eindelijk verder met map/line/pie. Nog steeds ideeen voor een 4e chart, maar ipv honing, wat niet echt een goed beeld kan tonen, misschien kosten van vervangen van bijen kolonies.
 
 * NOTITIE VOOR ZELF: bij causatie moet je de vorige data nog terughalen, zodat je alle data per periode hebt, want de huidige percentages vormen geen 100%
+
+## 23-06-2019
+* Geprobeert een update functie te implementeren voor pie chart, niet gelukt.
+
+
+## 24-06-2019
+* Line chart afgemaakt (d3 tip werkt niet, kan eventueel anders, maar kost wat tijd), pie chart en datamap legenda toegevoegd.
+
+* Update functie nog steeds niet gelukt.
+
+* Wat moet er nog gedaan worden:
+      * bootstrap (legenda map loopt door slider heen)
+      * update functie voor button + slider + figuren
+      * 2e pagina met tekst voor uitleg/verhaal
+      * checkbox / radio voor piechart om periode te selecteren
+      * eventueel tekst met uitleg op figuren pagina voor verhaal
+      * eventueel 4e figuur met kost of replacing bee colonies per state per year
