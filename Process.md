@@ -150,3 +150,17 @@
       * checkbox / radio voor piechart om periode te selecteren
       * eventueel tekst met uitleg op figuren pagina voor verhaal
       * eventueel 4e figuur met kost of replacing bee colonies per state per year
+
+
+## 25-06-2019
+* Update functie van piechart lukt, maar kan mooier
+* Update functie van datamap lukt.
+
+* mooie dropdown selector aangemaakt voor het selecteren van periode in de pie chart
+
+* Jammer genoeg kon ik mijn data niet zo krijgen dat ik ook nog de periode kon selecteren. Ik kon het uiteindelijk niet converteren naar json, wat dus de tijd die ik heb gestopt in het maken van de dropdown selector nutteloos heeft gemaakt. Voor nu zal ik het commenten, maar het moet waarschijnlijk gewoon weg.
+
+* wat moet nog
+    * bootstrap
+    * update line afmaken
+    * tekst met uitleg
