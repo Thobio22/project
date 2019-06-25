@@ -158,7 +158,7 @@
 
 * mooie dropdown selector aangemaakt voor het selecteren van periode in de pie chart
 
-* Jammer genoeg kon ik mijn data niet zo krijgen dat ik ook nog de periode kon selecteren. Ik kon het uiteindelijk niet converteren naar json, wat dus de tijd die ik heb gestopt in het maken van de dropdown selector nutteloos heeft gemaakt. Voor nu zal ik het commenten, maar het moet waarschijnlijk gewoon weg.
+* Jammer genoeg kon ik mijn data niet zo krijgen dat ik ook nog de periode kon selecteren. Ik kon het uiteindelijk niet converteren naar json (de index kon niet uniek gezet worden), wat dus de tijd die ik heb gestopt in het maken van de dropdown selector nutteloos heeft gemaakt. Voor nu zal ik het commenten, maar het moet waarschijnlijk gewoon weg.
 
 * wat moet nog
     * bootstrap
