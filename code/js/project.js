@@ -4,8 +4,6 @@
 //
 // This file determines the style of the given classes of the .js file.
 //
-// The dropdown menu is from https://guide.freecodecamp.org/javascript/tutorials/how-to-create-a-dropdown-menu-with-css-and-javascript/
-//
 // python -m http.server 8888 &
 // http://localhost:8888/index.html
 
@@ -26,11 +24,10 @@ window.onload = function() {
   Promise.all(requests).then(function(response) {
 
     // get data once everything is loaded in
-    var data_bee = response[0];
-    var data_bee_line = response[1];
-    var data_crop = response[2];
-    var data_cause = response[3];
-    // window.piedata = response[3];
+    var dataBee = response[0];
+    var dataBeeLine = response[1];
+    var dataCrop = response[2];
+    var dataCause = response[3];
 
     // set default variables for updating figures
     var state = "TO";
@@ -47,40 +44,27 @@ window.onload = function() {
     slider_output.innerHTML = year;
 
 
-    // //get elements from dropdown (link source in code description)
-    // var dropdownTitle = document.querySelector('.dropdown .title');
-    // var dropdownOptions = document.querySelectorAll('.dropdown .option');
-    //
-    //
-    // //bind listeners to dropdown elements gotten (link source in code description)
-    // dropdownTitle.addEventListener('click', toggleMenuDisplay);
-    // dropdownOptions.forEach(option => option.addEventListener('click',handleOptionSelected));
-    // document.querySelector('.dropdown .title').addEventListener('change', handleTitleChange); // changes periodvar html variable
-    // document.querySelector('.dropdown .title').addEventListener('change', function(){periodUpdate(data_cause)}); // gives data needed in updatePie
-
-
     // act when default button has been pressed
     d3v5.select("#defaultButton").on("click", function(){getButton()});
 
-    function getButton(data_cause, data_bee_line, data_crop) {
+
+    // function when button clicked
+    function getButton(dataCause, dataBeeLine, dataCrop) {
       // set selected html variable to desired value
       document.getElementById("periodvar").value = "year";
       document.getElementById("statevar").value = "TO"
 
-      // get html variables
-      var selectedYear = document.getElementById("yearvar").value
-      var selectedState = document.getElementById("statevar").value
-      // var selectedPeriod = document.getElementById("periodvar").value
-      // console.log(selectedPeriod)
-      updatePie(selectedYear, selectedState);
-      // updateLine(selectedState);
+
+      // update piechart
+      drawPiechart.updatePie();
+      drawLinechart.updateLine();
     };
 
 
     // initialise figures
-    drawMap(data_bee, year);
-    drawLinechart(data_crop, data_bee_line, state);
-    drawPiechart(data_cause, year, state);
+    drawMap(dataBee, year);
+    drawLinechart(dataCrop, dataBeeLine, state);
+    drawPiechart(dataCause, year, state);
 
 
     // on slider change = give new year
@@ -90,18 +74,12 @@ window.onload = function() {
         slider_output.innerHTML = year;
         document.getElementById("yearvar").value = year;
 
-        // update figures
-        drawLinechart.updateLine();
+        // update piechart
         drawPiechart.updatePie();
+
 
     };
   });
-};
-
-
-function updateFigures(dataPie, year, state, radius, svgPie) {
-    updatePie(dataPie, year, state, radius, svgPie);
-    updateLine(state);
 };
 
 
@@ -145,69 +123,48 @@ function drawMap(dataset, year) {
               done: function(linkedMap) {
                 // on click: update figures
                 linkedMap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
-                  // removes all lines in linechart
-                  console.log("komt in onclick map")
-                  console.log(geography);
+                  // sets state to selected state
                   document.getElementById("statevar").value = geography.id;
-                  console.log(document.getElementById("statevar").value)
-                  // d3v5.selectAll("#path").remove();
-                  // updateFigures(year, geography.id);
+
+                  // updates figures
                   drawPiechart.updatePie();
+                  drawLinechart.updateLine();
                 })
               }
   });
 
   d3v5.select("#year_slider").on("input", function(e) {
+
+    // set selectedYear to slider value
     selectedYear = parseInt(document.getElementById("year_slider").value)
-    console.log(selectedYear)
 
     if (selectedYear >= 2017) {
       selectedYear = 2016;
     };
 
+    // update map
     linkedMap.updateChoropleth(dataset[selectedYear]);
-  })
-
-
-
-  var slidermap = document.getElementById("year_slider");
-
-  slidermap.oninput = function() {
-    console.log("map_update")
-
-    // year = slider value
-    var selectedYear = this.value;
-
-    if (selectedYear > 2016) {
-      selectedYear = 2016;
-    }
-
-  };
+  });
 
 
   // draw a legend on map
-  // linkedMap.legend({
-  //   labels: {
-  //     90: "90 to 100%",
-  //     80: "80 to 90%",
-  //     70: "70 to 80%",
-  //     60: "60 to 70%",
-  //     50: "50 to 60%",
-  //     40: "40 to 50%",
-  //     30: "30 to 40%",
-  //     20: "20 to 30%",
-  //     10: "10 to 20%",
-  //     0: " 00 to 10%",
-  //   }
-  // });
+  linkedMap.legend({
+    labels: {
+      90: "90 to 100%",
+      80: "80 to 90%",
+      70: "70 to 80%",
+      60: "60 to 70%",
+      50: "50 to 60%",
+      40: "40 to 50%",
+      30: "30 to 40%",
+      20: "20 to 30%",
+      10: "10 to 20%",
+      0: " 00 to 10%",
+    }
+  });
 
 
 };
-
-
-function updateMap(dataset) {
-
-}
 
 
 function drawPiechart(dataset, year, state) {
@@ -219,15 +176,17 @@ function drawPiechart(dataset, year, state) {
   };
 
   // set dimension + margins of graph
-  var pieDim = { width: 450,
-                 height: 450,
+  var pieDim = { width: 350,
+                 height: 350,
                  margin: 40,
                  legendW: 150,
                  legendH: 150,
+                 top: 20
                };
 
   // set radius of the piechart
   var radius = pieDim.width / 2 - pieDim.margin;
+
 
   // create svg on pie_div
   var svg = d3v5.select("#pie_div")
@@ -247,12 +206,14 @@ function drawPiechart(dataset, year, state) {
   // set data to needed part of dataset
   var data = dataset[year][state];
 
+
   // set position of each causastion group on pie
   var pie = d3v5.pie()
                 .value(function(d) {
                   return d.value;
                 });
 
+  // sets data to correct format for piechart
   var dataReady = pie(d3v5.entries(data));
 
 
@@ -314,6 +275,7 @@ function drawPiechart(dataset, year, state) {
                           .attr("height", pieDim.legendH)
                           .attr("transform", "translate(" + 0 + "," + -140 + ")")
 
+  // create legend on svg
   var legendPie = svgPieLegend.selectAll(".legendPie")
                               .data(dataReady)
                               .enter()
@@ -323,6 +285,7 @@ function drawPiechart(dataset, year, state) {
                                 return "translate(" + 0 + "," + (i * 15 + 20) + ")";
                               });
 
+  // colors rect based on names
   legendPie.append("rect")
              .attr("width", 10)
              .attr("height", 10)
@@ -330,6 +293,7 @@ function drawPiechart(dataset, year, state) {
                  return color(d.data.key);
              });
 
+  // appends names to legend
   legendPie.append("text")
              .text(function(d){
                if (d.data.key == "Varroa_mites") {
@@ -349,17 +313,42 @@ function drawPiechart(dataset, year, state) {
              .attr("y", 10)
              .attr("x", 11);
 
+
+  // state iso to state name. source: http://code.activestate.com/recipes/577305-python-dictionary-of-us-states-and-territories/
+  // added TO: The United States
+  isoToState = { 'AK': 'Alaska', 'AL': 'Alabama', 'AR': 'Arkansas', 'AS': 'American Samoa',
+                 'AZ': 'Arizona', 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut',
+                 'DC': 'District of Columbia', 'DE': 'Delaware', 'FL': 'Florida',
+                 'GA': 'Georgia', 'GU': 'Guam', 'HI': 'Hawaii', 'IA': 'Iowa', 'ID': 'Idaho',
+                 'IL': 'Illinois', 'IN': 'Indiana', 'KS': 'Kansas', 'KY': 'Kentucky',
+                 'LA': 'Louisiana', 'MA': 'Massachusetts',  'MD': 'Maryland', 'ME': 'Maine',
+                 'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri', 'MP': 'Northern Mariana Islands',
+                 'MS': 'Mississippi', 'MT': 'Montana', 'NA': 'National', 'NC': 'North Carolina',
+                 'ND': 'North Dakota', 'NE': 'Nebraska', 'NH': 'New Hampshire',
+                 'NJ': 'New Jersey', 'NM': 'New Mexico', 'NV': 'Nevada', 'NY': 'New York',
+                 'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
+                 'PR': 'Puerto Rico', 'RI': 'Rhode Island', 'SC': 'South Carolina',
+                 'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah',
+                 'VA': 'Virginia', 'VI': 'Virgin Islands', 'VT': 'Vermont', 'WA': 'Washington',
+                 'WI': 'Wisconsin', 'WV': 'West Virginia', 'WY': 'Wyoming', "TO": "The United States"
+               };
+
+
+  // add title
+ svg.append("text")
+      .attr("class", "pieTitle")
+      .attr("x", 0)
+      .attr("y", 0 - (pieDim.legendH + pieDim.margin*1.5))
+      .attr("text-anchor", "middle")
+      .text("Cause for bee loss in " + isoToState[state]);
+
+
+  // make updatePie available to call on
   drawPiechart.updatePie = updatePie;
 
 
-
-  function updatePie() {
   // updates the pie chart when called on
-
-       // console.log(window.piedata)
-       console.log("kom in updatePie")
-
-
+  function updatePie() {
        // set color of the pie parts
        var color = d3v5.scaleOrdinal()
                        .domain(["a", "b", "c", "d", "e", "f"])
@@ -367,15 +356,15 @@ function drawPiechart(dataset, year, state) {
 
 
        // set dimension + margins of graph
-       var pieDim = { width: 450,
-                      height: 450,
+       var pieDim = { width: 350,
+                      height: 350,
                       margin: 40,
                       legendW: 150,
                       legendH: 150,
                     };
 
 
-       // set radius of the piechart
+       // remake radius of the updated piechart values
        var radius = pieDim.width / 2 - pieDim.margin;
 
 
@@ -385,14 +374,13 @@ function drawPiechart(dataset, year, state) {
        var selectedPeriod = document.getElementById("periodvar").value;
 
 
+       // set year to available data
        if (selectedYear <= 2014) {
          selectedYear = 2015;
        };
 
 
-
        // set data to needed part of dataset
-       console.log(dataset)
        var data = dataset[selectedYear][selectedState];
 
 
@@ -413,11 +401,6 @@ function drawPiechart(dataset, year, state) {
                             .outerRadius(radius);
 
 
-       // remake radius
-       var radius = pieDim.width / 2 - pieDim.margin;
-
-
-       // select already made causeTip
        // build d3v5.tooltip
        var causeUpTip = d3v5.tip()
                           .attr("class", "d3-tip")
@@ -443,11 +426,8 @@ function drawPiechart(dataset, year, state) {
                           })
                           .attr("stroke", "black");
 
-
        // call tip
        svg.call(causeTip);
-
-       console.log("na d3 tip")
 
 
        // update the slices
@@ -468,13 +448,16 @@ function drawPiechart(dataset, year, state) {
                    .attr("stroke", "black");
 
 
-      svg.selectAll(".pieGroup")
-         .data(dataUpdate)
-         .exit()
-         .remove();
+       // removes excess piechart slices
+       svg.selectAll(".pieGroup")
+          .data(dataUpdate)
+          .exit()
+          .remove();
 
 
-
+       // update figure title
+       d3v5.select(".pieTitle")
+           .text("Cause for bee loss in " + isoToState[selectedState]);
 
    };
 
@@ -482,10 +465,7 @@ function drawPiechart(dataset, year, state) {
 };
 
 
-
-
-
-function drawLinechart(data_crop, data_bee_line, state) {
+function drawLinechart(dataCrop, dataBeeLine, state) {
   // this makes the multiple-linechart based on given dataset, year and state.
 
   var lineDim = {
@@ -512,8 +492,8 @@ function drawLinechart(data_crop, data_bee_line, state) {
   // create x, y scaling for placing data in svg pixels
   var xScale = d3v5.scaleTime()
                    .domain([
-                     d3v5.min(data_bee_line[state], function (d) {return d["Year"] }),
-                     d3v5.max(data_bee_line[state], function (d) {return d["Year"]})])
+                     d3v5.min(dataBeeLine[state], function (d) {return d["Year"] }),
+                     d3v5.max(dataBeeLine[state], function (d) {return d["Year"]})])
                    .range([lineDim.top, lineDim.width]);
 
 
@@ -524,8 +504,8 @@ function drawLinechart(data_crop, data_bee_line, state) {
 
   var yScaleCrop = d3v5.scaleLinear()
                    .domain([
-                     d3v5.min(data_crop[state], function (d) {return d["Kg_per_Acre"] }) - (d3v5.min(data_crop[state], function (d) {return d["Kg_per_Acre"] })/2),
-                     d3v5.max(data_crop[state], function (d) {return d["Kg_per_Acre"] }) + (d3v5.max(data_crop[state], function (d) {return d["Kg_per_Acre"] })/2)])
+                     d3v5.min(dataCrop[state], function (d) {return d["Kg_per_Acre"] }) - (d3v5.min(dataCrop[state], function (d) {return d["Kg_per_Acre"] })/2),
+                     d3v5.max(dataCrop[state], function (d) {return d["Kg_per_Acre"] }) + (d3v5.max(dataCrop[state], function (d) {return d["Kg_per_Acre"] })/2)])
                    .range([lineDim.height - lineDim.top, lineDim.top]);
 
 
@@ -537,28 +517,6 @@ function drawLinechart(data_crop, data_bee_line, state) {
   var yAxisBee = d3v5.axisLeft(yScaleBee);
 
   var yAxisCrop = d3v5.axisRight(yScaleCrop);
-
-
-  // // create tip for extra information
-  // var beelineTip = d3v5.tip()
-  //                   .attr('class', 'd3-tip')
-  //                   .offset([-10, 0])
-  //                   .html(function(d) {
-  //                     return "Year: " + d["Year"] + "<br>" + "Bee Loss: " + d["Total_Annual_Loss"];
-  //                    })
-  //                   .attr("stroke", "black");
-  //
-  // var croplineTip = d3v5.tip()
-  //                   .attr('class', 'd3-tip')
-  //                   .offset([-10, 0])
-  //                   .html(function(d) {
-  //                     return "Year: " + d["Year"] + "<br>" + "Yield: " + d["Kg_per_Acre"];;
-  //                    })
-  //                   .attr("stroke", "black");
-  //
-  // // make interactive animation work
-  // svg.call(beelineTip);
-  // svg.call(croplineTip);
 
 
   // Add the bee loss line
@@ -575,7 +533,6 @@ function drawLinechart(data_crop, data_bee_line, state) {
               return xScale(d["Year"]);
             })
             .y(function(d) {
-              // console.log(d)
               return yScaleCrop(d["Kg_per_Acre"]);
             });
 
@@ -583,21 +540,23 @@ function drawLinechart(data_crop, data_bee_line, state) {
   // Add bee loss line
   svg.append("path")
        .attr("class", "beeLine")
+       .merge(svg.selectAll(".beeLine"))
+       .transition()
+       .duration(500)
        .attr("stroke", "red")
        .attr("fill", "none")
-       .attr("d", lineBee(data_bee_line[state]))
-       // .on('mouseover', beelineTip.show)
-       // .on('mouseout', beelineTip.hide);
+       .attr("d", lineBee(dataBeeLine[state]));
 
 
   // Add crop production line
   svg.append("path")
        .attr("class", "cropLine")
+       .merge(svg.selectAll(".cropLine"))
+       .transition()
+       .duration(500)
        .attr("stroke", "blue")
        .attr("fill", "none")
-       .attr("d", lineCrop(data_crop[state]))
-       // .on('mouseover', croplineTip.show)
-       // .on('mouseout', croplineTip.hide);
+       .attr("d", lineCrop(dataCrop[state]));
 
 
   // create x axis by calling on xAxis
@@ -641,6 +600,7 @@ function drawLinechart(data_crop, data_bee_line, state) {
        .text("Bee loss in colonies (%)")
        .style("font-size", 20);
 
+
   // create y-axis croplabel
   svg.append("text")
        .attr("class", "yCropLabel")
@@ -652,17 +612,47 @@ function drawLinechart(data_crop, data_bee_line, state) {
        .text("Yield in Kg per Acre");
 
 
+  // state iso to state name. source: http://code.activestate.com/recipes/577305-python-dictionary-of-us-states-and-territories/
+  // added TO: The United States
+  isoToState = {'AK': 'Alaska', 'AL': 'Alabama', 'AR': 'Arkansas', 'AS': 'American Samoa',
+                'AZ': 'Arizona', 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut',
+                'DC': 'District of Columbia', 'DE': 'Delaware', 'FL': 'Florida',
+                'GA': 'Georgia', 'GU': 'Guam', 'HI': 'Hawaii', 'IA': 'Iowa', 'ID': 'Idaho',
+                'IL': 'Illinois', 'IN': 'Indiana', 'KS': 'Kansas', 'KY': 'Kentucky',
+                'LA': 'Louisiana', 'MA': 'Massachusetts',  'MD': 'Maryland', 'ME': 'Maine',
+                'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri', 'MP': 'Northern Mariana Islands',
+                'MS': 'Mississippi', 'MT': 'Montana', 'NA': 'National', 'NC': 'North Carolina',
+                'ND': 'North Dakota', 'NE': 'Nebraska', 'NH': 'New Hampshire',
+                'NJ': 'New Jersey', 'NM': 'New Mexico', 'NV': 'Nevada', 'NY': 'New York',
+                'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
+                'PR': 'Puerto Rico', 'RI': 'Rhode Island', 'SC': 'South Carolina',
+                'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah',
+                'VA': 'Virginia', 'VI': 'Virgin Islands', 'VT': 'Vermont', 'WA': 'Washington',
+                'WI': 'Wisconsin', 'WV': 'West Virginia', 'WY': 'Wyoming', "TO": "The United States"
+              };
+
+
+  // add title
+  svg.append("text")
+       .attr("class", "lineTitle")
+       .attr("x", lineDim.right + lineDim.top/2)
+       .attr("y", 0 - (lineDim.top / 3))
+       .style("text-decoration", "underline")
+       .text("Bee loss and crop yield in " + isoToState[state]);
+
+
+  // make updateLine available for calling on outside the drawLinechart
   drawLinechart.updateLine = updateLine;
 
+
   function updateLine() {
-
-      console.log("komt in update line, state: ", state)
-
       // get html variables for updating figures
       var selectedYear = document.getElementById("yearvar").value;
       var selectedState = document.getElementById("statevar").value;
       var selectedPeriod = document.getElementById("periodvar").value;
 
+
+      // set line dimensions
       var lineDim = {
                     top: 20,
                     right: 60,
@@ -672,26 +662,26 @@ function drawLinechart(data_crop, data_bee_line, state) {
                     height: 400
                     };
 
-      // // create x, y scaling for placing data in svg pixels
-      // var xScale = d3v5.scaleTime()
-      //                  .domain([
-      //                    d3v5.min(data_bee_line[state], function (d) {return d["Year"] }),
-      //                    d3v5.max(data_bee_line[state], function (d) {return d["Year"]})])
-      //                  .range([lineDim.top, lineDim.width]);
-      //
-      //
-      // var yScaleBee = d3v5.scaleLinear()
-      //                     .domain([0, 100])
-      //                     .range([lineDim.height - lineDim.top, lineDim.top]);
-      //
-      //
-      // var yScaleCrop = d3v5.scaleLinear()
-      //                  .domain([
-      //                    d3v5.min(data_crop[state], function (d) {return d["Kg_per_Acre"] }) - (d3v5.min(data_crop[state], function (d) {return d["Kg_per_Acre"] })/2),
-      //                    d3v5.max(data_crop[state], function (d) {return d["Kg_per_Acre"] }) + (d3v5.max(data_crop[state], function (d) {return d["Kg_per_Acre"] })/2)])
-      //                  .range([lineDim.height - lineDim.top, lineDim.top]);
 
-      // Add the bee loss line
+      // create x, y scaling for placing data in svg pixels
+      var xScale = d3v5.scaleTime()
+                       .domain([
+                         d3v5.min(dataBeeLine[selectedState], function (d) {return d["Year"] }),
+                         d3v5.max(dataBeeLine[selectedState], function (d) {return d["Year"]})])
+                       .range([lineDim.top, lineDim.width]);
+
+      var yScaleBee = d3v5.scaleLinear()
+                          .domain([0, 100])
+                          .range([lineDim.height - lineDim.top, lineDim.top]);
+
+      var yScaleCrop = d3v5.scaleLinear()
+                       .domain([
+                         d3v5.min(dataCrop[selectedState], function (d) {return d["Kg_per_Acre"] }) - (d3v5.min(dataCrop[selectedState], function (d) {return d["Kg_per_Acre"] })/2),
+                         d3v5.max(dataCrop[selectedState], function (d) {return d["Kg_per_Acre"] }) + (d3v5.max(dataCrop[selectedState], function (d) {return d["Kg_per_Acre"] })/2)])
+                       .range([lineDim.height - lineDim.top, lineDim.top]);
+
+
+      // initialise line data formatting
       var lineBee = d3v5.line()
                  .x(function(d) {
                    return xScale(d["Year"]);
@@ -705,84 +695,64 @@ function drawLinechart(data_crop, data_bee_line, state) {
                    return xScale(d["Year"]);
                  })
                  .y(function(d) {
-                   // console.log(d)
                    return yScaleCrop(d["Kg_per_Acre"]);
                  });
 
 
+      // initialise new yAxis for crop
+      var newYaxisCrop = d3v5.axisRight(yScaleCrop);
+
+      svg.selectAll(".yAxisCrop")
+         .transition()
+         .duration(500)
+         .call(newYaxisCrop);
 
 
+      // initialise new bee line
+      var newBee = svg.selectAll(".beeLine")
+                      .data([dataBeeLine[selectedState]]);
+
+      // place new line and merge
+      newBee.enter()
+        .append("path")
+           .attr("class", "beeLine")
+           .attr("stroke", "red")
+           .attr("fill", "none")
+        .merge(newBee)
+           .transition()
+           .duration(500)
+           .attr("d", function(d) {
+             return lineBee(d);
+           });
+
+      // remove excess lines
+      newBee.exit().remove();
 
 
-  }
+      // initialise new crop line
+      var newCrop = svg.selectAll(".cropLine")
+                       .data([dataCrop[selectedState]]);
+
+      // place new line and merge
+      newCrop.enter()
+          .append("path")
+             .attr("class", "cropLine")
+             .attr("stroke", "blue")
+             .attr("fill", "none")
+          .merge(newCrop)
+             .transition()
+             .duration(500)
+             .attr("d", function(d) {
+               return lineCrop(d);
+             });
+
+      // remove excess lines
+      newCrop.exit().remove();
+
+
+      // update figure title
+      d3v5.select(".lineTitle")
+          .text("Bee loss and crop yield in " + isoToState[selectedState]);
+  };
 
 };
-
-
-// function toggleClass(elem,className){
-// 	if (elem.className.indexOf(className) !== -1) {
-// 		elem.className = elem.className.replace(className,'');
-// 	}
-// 	else {
-// 		elem.className = elem.className.replace(/\s+/g,' ') + 	' ' + className;
-// 	};
-//
-// 	return elem;
-// };
-//
-//
-// function toggleDisplay(elem) {
-// 	var curDisplayStyle = elem.style.display;
-//
-// 	if (curDisplayStyle === 'none' || curDisplayStyle === ''){
-// 		elem.style.display = 'block';
-// 	}
-// 	else{
-// 		elem.style.display = 'none';
-// 	}
-// };
-//
-//
-// function toggleMenuDisplay(e) {
-// 	var dropdown = e.currentTarget.parentNode;
-// 	var menu = dropdown.querySelector('.menu');
-// 	var icon = dropdown.querySelector('.fa-angle-right');
-//
-// 	toggleClass(menu,'hide');
-// 	toggleClass(icon,'rotate-90');
-// };
-//
-//
-// function handleOptionSelected(e) {
-// 	toggleClass(e.target.parentNode, 'hide');
-//
-// 	var id = e.target.id;
-// 	var newValue = e.target.textContent + ' ';
-// 	var titleElem = document.querySelector('.dropdown .title');
-// 	var icon = document.querySelector('.dropdown .title .fa');
-//
-//
-// 	titleElem.textContent = newValue;
-// 	titleElem.appendChild(icon);
-//
-// 	//trigger custom event
-// 	document.querySelector('.dropdown .title').dispatchEvent(new Event('change'));
-// 	//setTimeout is used so transition is properly shown
-// 	setTimeout(() => toggleClass(icon,'rotate-90',0));
-// };
-//
-//
-// function handleTitleChange(e) {
-//     // set selected html variable to desired value
-//     document.getElementById("periodvar").value = e.target.innerText;
-// };
-//
-//
-// function periodUpdate(data_cause) {
-//   // call in all needed variables
-//   var selectedYear = document.getElementById("yearvar").value
-//   var selectedState = document.getElementById("statevar").value
-//   var selectedPeriod = document.getElementById("periodvar").value
-//   console.log(selectedPeriod)
-//   drawPiechart.updatePie();
-// };
