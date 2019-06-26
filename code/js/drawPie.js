@@ -178,7 +178,7 @@ function drawPiechart(dataset, year, state) {
  svg.append("text")
       .attr("class", "pieTitle")
       .attr("x", 0)
-      .attr("y", 0 - (pieDim.legendH + pieDim.margin*1.5))
+      .attr("y", 0 - (pieDim.legendH + pieDim.top/2))
       .attr("text-anchor", "middle")
       .text("Cause for bee loss in " + isoToState[state]);
 
