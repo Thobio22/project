@@ -143,7 +143,7 @@ function drawPiechart(dataset, year, state) {
                  return "Other pests and parasites"
                }
                else if (d.data.key == "Other*") {
-                 return "Weather, starvation, queen failure or hive destruction"
+                 return "Other*"
                }
                else {
                  return d.data.key
