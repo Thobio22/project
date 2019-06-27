@@ -50,7 +50,7 @@ Link to the site: https://thobio22.github.io/project/index.html
 
 
 
-![pie](doc/line.png?raw=true "pie")
+![pie](doc/pie.png?raw=true "pie")
 
 * The piechart shows the documented causes for the loss in bee colonies in US apiary, indicated by the title.
 
