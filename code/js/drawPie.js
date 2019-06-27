@@ -255,7 +255,7 @@ function drawPiechart(dataset, year, state) {
                                        + d.data.value + "%</span>"
                               }
                               else if (d.data.key == "Other*") {
-                                return "Loss by weather, starvation, queen failure <br>" +
+                                return "Loss by other causes: weather, starvation, queen failure <br>" +
                                        "or hive destruction: <span style='color:red'>"
                                        + d.data.value + "%</span>"
                               }

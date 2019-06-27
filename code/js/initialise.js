@@ -10,13 +10,13 @@
 
 window.onload = function() {
 
-  var beeJson = "bee_colony_loss.json";
+  var beeJson = "../../Datasets/json/bee_colony_loss.json";
 
-  var beeLineJson = "bee_loss_line.json";
+  var beeLineJson = "../../Datasets/json/bee_loss_line.json";
 
-  var cropJson = "combined_crop.json";
+  var cropJson = "../../Datasets/json/combined_crop.json";
 
-  var causeJson = "causation_data.json";
+  var causeJson = "../../Datasets/json/causation_data.json";
 
   var requests = [d3v5.json(beeJson), d3v5.json(beeLineJson), d3v5.json(cropJson), d3v5.json(causeJson)]
 

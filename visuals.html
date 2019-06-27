@@ -10,7 +10,6 @@
     http://localhost:8888/index.html
   -->
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,12 +17,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Import D3 V5 -->
-    <script src="code/js/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- <script src="code/js/d3.v5.min.js"></script> -->
     <script>
       d3v5 = d3;
       window.d3 = null;
     </script>
-    <script src="code/js/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <!-- <script src="code/js/d3.v3.min.js"></script> -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
     <script src="code/js/datamaps.usa.min.js"></script>
     <script>
@@ -63,7 +64,7 @@
         <div class="col-7">
           <div id="map_div" style="position: relative; width: 600px; height: 360px;"></div>
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <p>
             The map shows the Bee loss in percentages, with darker reds indicating higher percentages.
             The data of the map is selectable per year with the slider underneath. This slider also
@@ -80,7 +81,12 @@
             quantaties to warrant data collection and making available for the public.
           </p>
           <p>
-            *Other: Includes loss by weather, starvation, insufficient forage, queen failure, hive damage or destruction, etc.
+            The map and line chart have data from 2010 to 2016, while the pie chart has data from 2015 to 2018.
+            Therefore, the map will not change on years later than 2016, and the pie chart will stay on the year 2015
+            when the slider is changed to years earlier than 2015.
+          </p>
+          <p>
+            *Other causes: Includes loss by weather, starvation, insufficient forage, queen failure, hive damage or destruction, etc.
         </div>
       </div>
 
