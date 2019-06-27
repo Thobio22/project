@@ -8,6 +8,7 @@ These plots are made with d3 (v3 and v5) and datamaps.
 The purpose of this visualisation is to make the populace of the Netherlands more aware of the decline of the honey bee and its effects on both agriculture and nature as we know it. This visualisation shows the state of the honey bee in the United states of America over the last 9 years, and the difficulties it had to face, as well as the effects their status has on the US.
 
 Link to the site: https://thobio22.github.io/project/index.html
+Link to the video:  https://youtu.be/RkWEQpExmcs
 
 ### Functionality
 * Upon entering the site, you will be greeted by a story as to why the visualisations were made. A navigation bar at the top will lead you to the visualisation by clicking on "Visuals". The tab "Sources" brings you to the site with links of the sources that were used for procuring the data, and writing the code for the visualisations.
@@ -78,5 +79,6 @@ Link to the site: https://thobio22.github.io/project/index.html
 
 ### COPYRIGHT
 (c) 2019
-This code is written by Thomas Verouden.
+All code found here is written and owned by Thomas Verouden, All rights reserved.
 Various sources have been used as inspiration and code base in writing the visualisations in javascript, d3.
+See COPYRIGHT.md for more information
