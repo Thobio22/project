@@ -164,3 +164,16 @@
     * bootstrap
     * update line afmaken
     * tekst met uitleg
+
+
+## 26-06-2019
+* Update functie van linechart afgemaakt.
+
+* Code in aparte files gezet, javascript in code/js , python in code/python, css in code/css. Datasets in Datasets/[file type].
+
+* Navigation bar gemaakt met links naar de .html paginas. Home = index.html met geschreven verhaal over de visualisaties. Visuals = figuren en stukje tekst voor uitleg van figuren. Sources = pagina met links waar ik de data heb gevonden en figuren op gebaseerd heb.
+
+* Verhaal geschreven en visuals geformatteerd met bootstrap.
+
+## 27-06-2019
+* verhaal iets aangepast (meer info) en met bootstrap even geformatteerd met bootstrap.
