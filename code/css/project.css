@@ -125,7 +125,7 @@
     }
 
     .yBeeLabel {
-      font-size: 12px;
+      font-size: 15px;
     }
 
     .yAxisCrop {
@@ -133,11 +133,11 @@
     }
 
     .yCropLabel {
-      font-size: 12px;
+      font-size: 15px;
     }
 
     .xLabel {
-      font-size: 12px;
+      font-size: 15px;
     }
 
     .axis path,

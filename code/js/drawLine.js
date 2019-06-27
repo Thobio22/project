@@ -139,8 +139,7 @@ function drawLinechart(dataCrop, dataBeeLine, state) {
        .attr("x", -lineDim.right*2)
        .attr("dy", "1em")
        .attr("transform", "rotate(-90)")
-       .text("Bee loss in colonies (%)")
-       .style("font-size", 20);
+       .text("Bee loss in colonies (%)");
 
 
   // create y-axis croplabel
